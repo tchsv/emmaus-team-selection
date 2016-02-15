@@ -1,0 +1,28 @@
+<section data-ng-controller="TeamMembersController" data-ng-init="toViewTeamMember()">
+	<div class="page-header">
+		<h1 data-ng-bind="teamMember.name"></h1>
+	</div>
+
+	<div class="col-md-12">
+
+		<form novalidate>
+			<formly-form model="teamMember" fields="formFields">
+			</formly-form>
+		</form>
+
+		<hr/>
+		<div data-ng-show="((authentication.user) && (authentication.user._id == teamMember.user._id))">
+			<a class="btn btn-success" href="/#!/teamMembers/{{teamMember._id}}/edit">
+				<i class="glyphicon glyphicon-edit"></i> Edit
+			</a>
+			<a class="btn btn-danger" title="Remove" ng-really-message="Are you sure ?" ng-really-click="remove()" item="teamMember">
+				<i class="glyphicon glyphicon-remove-circle"></i> Delete
+			</a>
+			<a class="btn btn-primary" href="/#!/teamMembers">
+				<i class="glyphicon glyphicon-list"></i> List TeamMembers
+			</a>
+		</div>
+
+	</div>
+
+</section>
