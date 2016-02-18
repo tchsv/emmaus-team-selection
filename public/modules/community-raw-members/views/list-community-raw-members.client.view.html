@@ -1,0 +1,77 @@
+<section data-ng-controller="CommunityRawMembersController">
+    <div class="page-header">
+        <h1>Community raw members</h1>
+    </div>
+
+    <div class="pull-right">
+      <a type="button" class="btn btn-success" href="/#!/community-raw-members/create">
+        <i class="glyphicon glyphicon-open"></i> New CommunityRawMember
+      </a>
+    </div>
+
+    <div>
+        <table ng-table="tableParams" show-filter="true">
+            <tr ng-repeat="communityRawMember in $data">
+                <td data-title="'Name'" sortable="'name'" filter="{ 'name': 'text' }">{{communityRawMember.name}}</td>
+                <td data-title="'LAST_NAME'" sortable="'LAST_NAME'" filter="{ 'LAST_NAME': 'text' }">{{communityRawMember.LAST_NAME}}</td>
+                <td data-title="'FIRST_NAME'" sortable="'FIRST_NAME'" filter="{ 'FIRST_NAME': 'text' }">{{communityRawMember.FIRST_NAME}}</td>
+                <td data-title="'AC'" sortable="'AC'" filter="{ 'AC': 'text' }">{{communityRawMember.AC}}</td>
+                <td data-title="'PHONE'" sortable="'PHONE'" filter="{ 'PHONE': 'text' }">{{communityRawMember.PHONE}}</td>
+                <td data-title="'STREET_ADDRESS'" sortable="'STREET_ADDRESS'" filter="{ 'STREET_ADDRESS': 'text' }">{{communityRawMember.STREET_ADDRESS}}</td>
+                <td data-title="'CITY'" sortable="'CITY'" filter="{ 'CITY': 'text' }">{{communityRawMember.CITY}}</td>
+                <td data-title="'ST'" sortable="'ST'" filter="{ 'ST': 'text' }">{{communityRawMember.ST}}</td>
+                <td data-title="'ZIP'" sortable="'ZIP'" filter="{ 'ZIP': 'text' }">{{communityRawMember.ZIP}}</td>
+                <td data-title="'Original_Walk'" sortable="'Original_Walk'" filter="{ 'Original_Walk': 'text' }">{{communityRawMember.Original_Walk}}</td>
+                <td data-title="'L_D'" sortable="'L_D'" filter="{ 'L_D': 'text' }">{{communityRawMember.L_D}}</td>
+                <td data-title="'S_D'" sortable="'S_D'" filter="{ 'S_D': 'text' }">{{communityRawMember.S_D}}</td>
+                <td data-title="'A_L_D'" sortable="'A_L_D'" filter="{ 'A_L_D': 'text' }">{{communityRawMember.A_L_D}}</td>
+                <td data-title="'Mu'" sortable="'Mu'" filter="{ 'Mu': 'text' }">{{communityRawMember.Mu}}</td>
+                <td data-title="'A_L_T'" sortable="'A_L_T'" filter="{ 'A_L_T': 'text' }">{{communityRawMember.A_L_T}}</td>
+                <td data-title="'T_L'" sortable="'T_L'" filter="{ 'T_L': 'text' }">{{communityRawMember.T_L}}</td>
+                <td data-title="'Agape'" sortable="'Agape'" filter="{ 'Agape': 'text' }">{{communityRawMember.Agape}}</td>
+                <td data-title="'M_S'" sortable="'M_S'" filter="{ 'M_S': 'text' }">{{communityRawMember.M_S}}</td>
+                <td data-title="'Ref'" sortable="'Ref'" filter="{ 'Ref': 'text' }">{{communityRawMember.Ref}}</td>
+                <td data-title="'p72_hr'" sortable="'p72_hr'" filter="{ 'p72_hr': 'text' }">{{communityRawMember.p72_hr}}</td>
+                <td data-title="'Hous'" sortable="'Hous'" filter="{ 'Hous': 'text' }">{{communityRawMember.Hous}}</td>
+                <td data-title="'Cnd_Lite'" sortable="'Cnd_Lite'" filter="{ 'Cnd_Lite': 'text' }">{{communityRawMember.Cnd_Lite}}</td>
+                <td data-title="'Clo'" sortable="'Clo'" filter="{ 'Clo': 'text' }">{{communityRawMember.Clo}}</td>
+                <td data-title="'Ent'" sortable="'Ent'" filter="{ 'Ent': 'text' }">{{communityRawMember.Ent}}</td>
+                <td data-title="'S_Pray'" sortable="'S_Pray'" filter="{ 'S_Pray': 'text' }">{{communityRawMember.S_Pray}}</td>
+                <td data-title="'Spo_Hr'" sortable="'Spo_Hr'" filter="{ 'Spo_Hr': 'text' }">{{communityRawMember.Spo_Hr}}</td>
+                <td data-title="'Worship'" sortable="'Wor'" filter="{ 'Wor': 'text' }">{{communityRawMember.Wor}}</td>
+                <td data-title="'Goph'" sortable="'Goph'" filter="{ 'Goph': 'text' }">{{communityRawMember.Goph}}</td>
+                <td data-title="'Clean Up'" sortable="'ClnUp'" filter="{ 'ClnUp': 'text' }">{{communityRawMember.ClnUp}}</td>
+                <td data-title="'Priority'" sortable="'PRI'" filter="{ 'PRI': 'text' }">{{communityRawMember.PRI}}</td>
+                <td data-title="'Presithood of Beleivers'" sortable="'PHB'" filter="{ 'PHB': 'text' }">{{communityRawMember.PHB}}</td>
+                <td data-title="'Life of Piety'" sortable="'PIE'" filter="{ 'PIE': 'text' }">{{communityRawMember.PIE}}</td>
+                <td data-title="'S'" sortable="'S'" filter="{ 'S': 'text' }">{{communityRawMember.S}}</td>
+                <td data-title="'CA'" sortable="'CA'" filter="{ 'CA': 'text' }">{{communityRawMember.CA}}</td>
+                <td data-title="'DISC'" sortable="'DISC'" filter="{ 'DISC': 'text' }">{{communityRawMember.DISC}}</td>
+                <td data-title="'CW'" sortable="'CW'" filter="{ 'CW': 'text' }">{{communityRawMember.CW}}</td>
+                <td data-title="'BC'" sortable="'BC'" filter="{ 'BC': 'text' }">{{communityRawMember.BC}}</td>
+                <td data-title="'P'" sortable="'P'" filter="{ 'P': 'text' }">{{communityRawMember.P}}</td>
+                <td data-title="'FD'" sortable="'FD'" filter="{ 'FD': 'text' }">{{communityRawMember.FD}}</td>
+                <td data-title="'PG'" sortable="'PG'" filter="{ 'PG': 'text' }">{{communityRawMember.PG}}</td>
+                <td data-title="'OG'" sortable="'OG'" filter="{ 'OG': 'text' }">{{communityRawMember.OG}}</td>
+                <td data-title="'SG'" sortable="'SG'" filter="{ 'SG': 'text' }">{{communityRawMember.SG}}</td>
+                <td data-title="'JG'" sortable="'JG'" filter="{ 'JG': 'text' }">{{communityRawMember.JG}}</td>
+                <td data-title="'MG'" sortable="'MG'" filter="{ 'MG': 'text' }">{{communityRawMember.MG}}</td>
+                <td>
+                    <div class="table-actions">
+                <td>
+                   <div class="table-actions">
+                        <a class="btn btn-default" title="View" href="/#!/community-raw-members/{{communityRawMember._id}}">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                        </a>
+                        <a class="btn btn-default" title="Edit" href="/#!/community-raw-members/{{communityRawMember._id}}/edit">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </a>
+                        <a class="btn btn-danger" title="Remove" ng-really-message="Are you sure ?" ng-really-click="remove(communityRawMember)" item="communityRawMember">
+                  				<span class="glyphicon glyphicon-remove-circle"></span>
+                  			</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>

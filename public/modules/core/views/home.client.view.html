@@ -1,6 +1,30 @@
 <section data-ng-controller="HomeController">
 	<div>
 
+		<h2>Random activities with really hugh buttons.....</h2>
+
+		<div class="border bg-info">
+			<h3>Select a file:
+			</h3>
+
+			<input type="file" name="fileToProcess"/>
+			<h3>
+				<a type="button" class="btn btn-info " title='Pull' ng-click="refreshCommunityDataFromExcel()">
+            <span class="glyphicon glyphicon-tasks">
+            </span>
+					Refresh Community Data From Excel
+				</a>
+				<a type="button" class="btn btn-info " title='Pull' ng-click="refreshTeamDataFromExcel()">
+            <span class="glyphicon glyphicon-tasks">
+            </span>
+					Refresh Team Data From Excel
+				</a>
+			</h3>
+		</div>
+
+
+	<div>
+
 		<h2>Congrats! You've configured and run the sample application.</h2>
 
 		<p>To create new entities in your project you have to:</p>
