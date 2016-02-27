@@ -10,12 +10,7 @@ var mongoose = require('mongoose'),
  * Community member Schema
  */
 var CommunityMemberSchema = new Schema({
-    name: {
-        type: String,
-        default: '',
-        required: 'Please fill Community member name',
-        trim: true
-    },
+    COMBO_KEY: {type: String},
     LAST_NAME: {type: String},
     FIRST_NAME: {type: String},
     AC: {type: String},
@@ -44,6 +39,7 @@ var CommunityMemberSchema = new Schema({
     Wor: {type: String},
     Goph: {type: String},
     ClnUp: {type: String},
+    PP_Tech: {type: String},
     PRI: {type: String},
     PHB: {type: String},
     PIE: {type: String},

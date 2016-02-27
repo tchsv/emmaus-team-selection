@@ -12,7 +12,6 @@
     <div>
         <table ng-table="tableParams" show-filter="true">
             <tr ng-repeat="teamMember in $data">
-                <td data-title="'Name'" sortable="'name'" filter="{ 'name': 'text' }">{{teamMember.name}}</td>
                 <td data-title="'LAST_NAME'" sortable="'LAST_NAME'" filter="{ 'LAST_NAME': 'text' }">{{teamMember.LAST_NAME}}</td>
                 <td data-title="'FIRST_NAME'" sortable="'FIRST_NAME'" filter="{ 'FIRST_NAME': 'text' }">{{teamMember.FIRST_NAME}}</td>
                 <td data-title="'AC'" sortable="'AC'" filter="{ 'AC': 'text' }">{{teamMember.AC}}</td>
@@ -35,6 +34,7 @@
                 <td data-title="'Hous'" sortable="'Hous'" filter="{ 'Hous': 'text' }">{{teamMember.Hous}}</td>
                 <td data-title="'Cnd_Lite'" sortable="'Cnd_Lite'" filter="{ 'Cnd_Lite': 'text' }">{{teamMember.Cnd_Lite}}</td>
                 <td data-title="'Clo'" sortable="'Clo'" filter="{ 'Clo': 'text' }">{{teamMember.Clo}}</td>
+                <td data-title="'Tech'" sortable="'PP_Tech'" filter="{ 'PP_Tech': 'text' }">{{teamMember.PP_Tech}}</td>
                 <td data-title="'Ent'" sortable="'Ent'" filter="{ 'Ent': 'text' }">{{teamMember.Ent}}</td>
                 <td data-title="'S_Pray'" sortable="'S_Pray'" filter="{ 'S_Pray': 'text' }">{{teamMember.S_Pray}}</td>
                 <td data-title="'Spo_Hr'" sortable="'Spo_Hr'" filter="{ 'Spo_Hr': 'text' }">{{teamMember.Spo_Hr}}</td>

@@ -10,12 +10,6 @@ var mongoose = require('mongoose'),
  * Team member Schema
  */
 var TeamMemberSchema = new Schema({
-	name: {
-		type: String,
-		default: '',
-		required: 'Please fill Team member name',
-		trim: true
-	},
 	LAST_NAME: {type: String},
 	FIRST_NAME: {type: String},
 	AC: {type: String},
@@ -44,6 +38,7 @@ var TeamMemberSchema = new Schema({
 	Wor: {type: String},
 	Goph: {type: String},
 	ClnUp: {type: String},
+	PP_Tech: {type: String},
 	PRI: {type: String},
 	PHB: {type: String},
 	PIE: {type: String},

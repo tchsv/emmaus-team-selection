@@ -6,6 +6,9 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
 
+        var allTheData = [];
+        var countOfTheData = 1;
+        var allTheDataPost;
 
 		$scope.refreshCommunityDataFromExcel = function () {
 			var reader = new FileReader();
@@ -30,62 +33,22 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 				var headerIs = [];
 				//var address_of_cell = 'A';
 				var oddStuff = $window.XLSX.utils.sheet_to_json(worksheet);
-
-				var nowWholeList = $resource('/community-members?count=99999&page=1');
+                allTheData = oddStuff
+				var nowWholeList = $resource('/community-raw-members?count=99999&page=1');
 				var answer = nowWholeList.get(function() {
 					console.log(answer);
-                    if ( answer.total === 0 ) {
+                    var holeList = $resource('/community-raw-members/', null,
+                        {
+                            'set': {method: 'POST'}
+                        });
+                    allTheDataPost = holeList;
+                    countOfTheData = 0;
+                    allTheDataPost.set(allTheData[countOfTheData]).$promise.then(successSent,failSent);
 
-                    }
-                    else {
-                        for (var i = 0; i < answer.total; i++) {
+                     //   for (var j = 0; j < oddStuff.length; j++) {
+                     //       holeList.set(oddStuff[j]);
+                     //   }
 
-                            /**
-                             * Now check for each row....  search the worksheet the the First and Last name....
-                             * @type {Array}
-                             */
-                            var currentRow = answer.results[i];
-                            for (var j = 0; j < oddStuff.length; j++) {
-                                if (currentRow.LastName.trim() == oddStuff[j].LastName.trim()) {
-                                    if (currentRow.FirstName.trim() == oddStuff[j].FirstName.trim()) {
-                                        var newRow = oddStuff[j];
-                                        var update = false;
-                                        var keys = Object.keys(newRow);
-                                        for (var k = 0; k < keys.length; k++) {
-                                            var nR = newRow[keys[k]];
-                                            nR = nR.trim();
-                                            var cR = currentRow[keys[k]];
-                                            if (cR) {
-                                                cR = cR.trim();
-                                            }
-                                            if (nR != cR) {
-                                                currentRow[keys[k]] = nR;
-                                                update = true;
-                                            }
-                                        }
-                                        if (update) {
-                                            console.log("updated row:" + JSON.stringify(currentRow));
-                                            if (!currentRow.Room_Mate1) {
-                                                currentRow.Room_Mate1 = null;
-                                            }
-                                            if (!currentRow.Room_Mate2) {
-                                                currentRow.Room_Mate2 = null;
-                                            }
-                                            if (!currentRow.Room_Mate3) {
-                                                currentRow.Room_Mate3 = null;
-                                            }
-                                            var holeList = $resource('/pilgrims/' + currentRow._id, null,
-                                                {
-                                                    'update': {method: 'PUT'}
-                                                });
-                                            holeList.update(currentRow);
-
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
 				});
 
 
@@ -100,8 +63,15 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 
 		}
 
-
-
+        var successSent = function() {
+            if (countOfTheData < allTheData.length) {
+                countOfTheData++;
+                allTheDataPost.set(allTheData[countOfTheData]).$promise.then(successSent,failSent);
+            }
+        }
+        var failSent = function (err) {
+            console.log(err);
+        }
 
 
 	}

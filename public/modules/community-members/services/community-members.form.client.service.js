@@ -10,13 +10,6 @@
       var getFormFields = function(disabled) {
 
         var fields = [
-  				{
-  					key: 'name',
-  					type: 'input',
-  					templateOptions: {
-  			      label: 'Name:',
-  						disabled: disabled
-  			    }},
             { key: 'LAST_NAME',
                 type: 'input',
                 templateOptions: {
@@ -185,7 +178,13 @@
                     label: 'Clean Up:',
                     disabled: disabled
                 }},
-            { key: 'PRI',
+            { key: 'PP_Tech',
+                type: 'input',
+                templateOptions: {
+                    label: 'Tech:',
+                    disabled: disabled
+                }},
+          { key: 'PRI',
                 type: 'input',
                 templateOptions: {
                     label: 'Priority:',

@@ -12,7 +12,6 @@
     <div>
         <table ng-table="tableParams" show-filter="true">
             <tr ng-repeat="communityMember in $data">
-                <td data-title="'Name'" sortable="'name'" filter="{ 'name': 'text' }">{{communityMember.name}}</td>
                 <td data-title="'LAST_NAME'" sortable="'LAST_NAME'" filter="{ 'LAST_NAME': 'text' }">{{communityMember.LAST_NAME}}</td>
                 <td data-title="'FIRST_NAME'" sortable="'FIRST_NAME'" filter="{ 'FIRST_NAME': 'text' }">{{communityMember.FIRST_NAME}}</td>
                 <td data-title="'AC'" sortable="'AC'" filter="{ 'AC': 'text' }">{{communityMember.AC}}</td>
@@ -41,6 +40,7 @@
                 <td data-title="'Worship'" sortable="'Wor'" filter="{ 'Wor': 'text' }">{{communityMember.Wor}}</td>
                 <td data-title="'Goph'" sortable="'Goph'" filter="{ 'Goph': 'text' }">{{communityMember.Goph}}</td>
                 <td data-title="'Clean Up'" sortable="'ClnUp'" filter="{ 'ClnUp': 'text' }">{{communityMember.ClnUp}}</td>
+                <td data-title="'Tech'" sortable="'PP_Tech'" filter="{ 'PP_Tech': 'text' }">{{communityMember.PP_Tech}}</td>
                 <td data-title="'Priority'" sortable="'PRI'" filter="{ 'PRI': 'text' }">{{communityMember.PRI}}</td>
                 <td data-title="'Presithood of Beleivers'" sortable="'PHB'" filter="{ 'PHB': 'text' }">{{communityMember.PHB}}</td>
                 <td data-title="'Life of Piety'" sortable="'PIE'" filter="{ 'PIE': 'text' }">{{communityMember.PIE}}</td>

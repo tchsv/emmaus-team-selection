@@ -10,9 +10,8 @@
     </div>
 
     <div>
-        <table ng-table="tableParams" show-filter="true">
+        <table ng-table="tableParams" class="table table-striped table-bordered table-condensed  ng-table-responsive" show-filter="true">
             <tr ng-repeat="communityRawMember in $data">
-                <td data-title="'Name'" sortable="'name'" filter="{ 'name': 'text' }">{{communityRawMember.name}}</td>
                 <td data-title="'LAST_NAME'" sortable="'LAST_NAME'" filter="{ 'LAST_NAME': 'text' }">{{communityRawMember.LAST_NAME}}</td>
                 <td data-title="'FIRST_NAME'" sortable="'FIRST_NAME'" filter="{ 'FIRST_NAME': 'text' }">{{communityRawMember.FIRST_NAME}}</td>
                 <td data-title="'AC'" sortable="'AC'" filter="{ 'AC': 'text' }">{{communityRawMember.AC}}</td>
@@ -41,6 +40,7 @@
                 <td data-title="'Worship'" sortable="'Wor'" filter="{ 'Wor': 'text' }">{{communityRawMember.Wor}}</td>
                 <td data-title="'Goph'" sortable="'Goph'" filter="{ 'Goph': 'text' }">{{communityRawMember.Goph}}</td>
                 <td data-title="'Clean Up'" sortable="'ClnUp'" filter="{ 'ClnUp': 'text' }">{{communityRawMember.ClnUp}}</td>
+                <td data-title="'Tech'" sortable="'PP_Tech'" filter="{ 'PP_Tech': 'text' }">{{communityRawMember.PP_Tech}}</td>
                 <td data-title="'Priority'" sortable="'PRI'" filter="{ 'PRI': 'text' }">{{communityRawMember.PRI}}</td>
                 <td data-title="'Presithood of Beleivers'" sortable="'PHB'" filter="{ 'PHB': 'text' }">{{communityRawMember.PHB}}</td>
                 <td data-title="'Life of Piety'" sortable="'PIE'" filter="{ 'PIE': 'text' }">{{communityRawMember.PIE}}</td>

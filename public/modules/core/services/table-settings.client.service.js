@@ -21,12 +21,12 @@
 
       var params = {
         page: 1,
-        count: 5
+        count: 250
       };
 
       var settings = {
         total: 0,
-        counts: [5, 10, 15],
+        counts: [5, 10, 15,250,500, 999],
         filterDelay: 0,
       };
 
