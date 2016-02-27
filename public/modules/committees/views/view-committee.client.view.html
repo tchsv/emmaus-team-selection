@@ -1,0 +1,28 @@
+<section data-ng-controller="CommitteesController" data-ng-init="toViewCommittee()">
+	<div class="page-header">
+		<h1 data-ng-bind="committee.name"></h1>
+	</div>
+
+	<div class="col-md-12">
+
+		<form novalidate>
+			<formly-form model="committee" fields="formFields">
+			</formly-form>
+		</form>
+
+		<hr/>
+		<div data-ng-show="((authentication.user) && (authentication.user._id == committee.user._id))">
+			<a class="btn btn-success" href="/#!/committees/{{committee._id}}/edit">
+				<i class="glyphicon glyphicon-edit"></i> Edit
+			</a>
+			<a class="btn btn-danger" title="Remove" ng-really-message="Are you sure ?" ng-really-click="remove()" item="committee">
+				<i class="glyphicon glyphicon-remove-circle"></i> Delete
+			</a>
+			<a class="btn btn-primary" href="/#!/committees">
+				<i class="glyphicon glyphicon-list"></i> List Committees
+			</a>
+		</div>
+
+	</div>
+
+</section>

@@ -1,0 +1,35 @@
+<section data-ng-controller="CommitteesController">
+    <div class="page-header">
+        <h1>Committees</h1>
+    </div>
+
+    <div class="pull-right">
+      <a type="button" class="btn btn-success" href="/#!/committees/create">
+        <i class="glyphicon glyphicon-open"></i> New Committee
+      </a>
+    </div>
+
+    <div>
+        <table ng-table="tableParams" show-filter="true">
+            <tr ng-repeat="committee in $data">
+                <!--Add new columns for the new properties in the HTML table in public/modules/module-name/views/list-module-name.client.view.html-->
+                <td data-title="'Name'" sortable="'name'" filter="{ 'name': 'text' }">{{committee.name}}</td>
+                <td>
+                    <div class="table-actions">
+                <td>
+                   <div class="table-actions">
+                        <a class="btn btn-default" title="View" href="/#!/committees/{{committee._id}}">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                        </a>
+                        <a class="btn btn-default" title="Edit" href="/#!/committees/{{committee._id}}/edit">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </a>
+                        <a class="btn btn-danger" title="Remove" ng-really-message="Are you sure ?" ng-really-click="remove(committee)" item="committee">
+                  				<span class="glyphicon glyphicon-remove-circle"></span>
+                  			</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
