@@ -10,6 +10,18 @@
       var getFormFields = function(disabled) {
 
         var fields = [
+            { key: 'COMBO_KEY',
+                type: 'input',
+                templateOptions: {
+                    label: 'Selected:',
+                    disabled: disabled
+                }},
+            { key: 'Selected',
+                type: 'input',
+                templateOptions: {
+                    label: 'Selected:',
+                    disabled: disabled
+                }},
             { key: 'LAST_NAME',
                 type: 'input',
                 templateOptions: {
@@ -88,7 +100,7 @@
                     label: 'Music:',
                     disabled: disabled
                 }},
-            { key: 'A_L_T',
+            { key: 'A_T_L',
                 type: 'input',
                 templateOptions: {
                     label: 'Asst. Table Leader:',
@@ -273,8 +285,218 @@
                 templateOptions: {
                     label: 'MG:',
                     disabled: disabled
-                }}
+                }},
 
+            { key: 'sL_D',
+                type: 'input',
+                templateOptions: {
+                    label: 'Lay Dir:',
+                    disabled: disabled
+                }},
+            { key: 'sS_D',
+                type: 'input',
+                templateOptions: {
+                    label: 'Spiritual Dir:',
+                    disabled: disabled
+                }},
+            { key: 'sA_L_D',
+                type: 'input',
+                templateOptions: {
+                    label: 'Asst. Lay Dir:',
+                    disabled: disabled
+                }},
+            { key: 'sMu',
+                type: 'input',
+                templateOptions: {
+                    label: 'Music:',
+                    disabled: disabled
+                }},
+            { key: 'sA_T_L',
+                type: 'input',
+                templateOptions: {
+                    label: 'Asst. Table Leader:',
+                    disabled: disabled
+                }},
+            { key: 'sT_L',
+                type: 'input',
+                templateOptions: {
+                    label: 'Table Leader:',
+                    disabled: disabled
+                }},
+            { key: 'sAgape',
+                type: 'input',
+                templateOptions: {
+                    label: 'Agape:',
+                    disabled: disabled
+                }},
+            { key: 'sM_S',
+                type: 'input',
+                templateOptions: {
+                    label: 'M S:',
+                    disabled: disabled
+                }},
+            { key: 'sRef',
+                type: 'input',
+                templateOptions: {
+                    label: 'Refreshments:',
+                    disabled: disabled
+                }},
+            { key: 'sp72_hr',
+                type: 'input',
+                templateOptions: {
+                    label: '72hr:',
+                    disabled: disabled
+                }},
+            { key: 'sHous',
+                type: 'input',
+                templateOptions: {
+                    label: 'Housing:',
+                    disabled: disabled
+                }},
+            { key: 'sCnd_Lite',
+                type: 'input',
+                templateOptions: {
+                    label: 'Candle Light:',
+                    disabled: disabled
+                }},
+            { key: 'sClo',
+                type: 'input',
+                templateOptions: {
+                    label: 'Closing:',
+                    disabled: disabled
+                }},
+            { key: 'sEnt',
+                type: 'input',
+                templateOptions: {
+                    label: 'Entertainment:',
+                    disabled: disabled
+                }},
+            { key: 'sS_Pray',
+                type: 'input',
+                templateOptions: {
+                    label: 'Speakers Prayer Chap:',
+                    disabled: disabled
+                }},
+            { key: 'sSpo_Hr',
+                type: 'input',
+                templateOptions: {
+                    label: 'Sponsers Hour:',
+                    disabled: disabled
+                }},
+            { key: 'sWor',
+                type: 'input',
+                templateOptions: {
+                    label: 'Worship:',
+                    disabled: disabled
+                }},
+            { key: 'sGoph',
+                type: 'input',
+                templateOptions: {
+                    label: 'Goph:',
+                    disabled: disabled
+                }},
+            { key: 'sClnUp',
+                type: 'input',
+                templateOptions: {
+                    label: 'Clean Up:',
+                    disabled: disabled
+                }},
+            { key: 'sPP_Tech',
+                type: 'input',
+                templateOptions: {
+                    label: 'Tech:',
+                    disabled: disabled
+                }},
+            { key: 'sPRI',
+                type: 'input',
+                templateOptions: {
+                    label: 'Priority:',
+                    disabled: disabled
+                }},
+            { key: 'sPHB',
+                type: 'input',
+                templateOptions: {
+                    label: 'Presithood of Beleivers:',
+                    disabled: disabled
+                }},
+            { key: 'sPIE',
+                type: 'input',
+                templateOptions: {
+                    label: 'Life of Piety:',
+                    disabled: disabled
+                }},
+            { key: 'sS',
+                type: 'input',
+                templateOptions: {
+                    label: 'S:',
+                    disabled: disabled
+                }},
+            { key: 'sCA',
+                type: 'input',
+                templateOptions: {
+                    label: 'CA:',
+                    disabled: disabled
+                }},
+            { key: 'sDISC',
+                type: 'input',
+                templateOptions: {
+                    label: 'DISC:',
+                    disabled: disabled
+                }},
+            { key: 'sCW',
+                type: 'input',
+                templateOptions: {
+                    label: 'CW:',
+                    disabled: disabled
+                }},
+            { key: 'sBC',
+                type: 'input',
+                templateOptions: {
+                    label: 'BC:',
+                    disabled: disabled
+                }},
+            { key: 'sP',
+                type: 'input',
+                templateOptions: {
+                    label: 'P:',
+                    disabled: disabled
+                }},
+            { key: 'sFD',
+                type: 'input',
+                templateOptions: {
+                    label: 'FD:',
+                    disabled: disabled
+                }},
+            { key: 'sPG',
+                type: 'input',
+                templateOptions: {
+                    label: 'PG:',
+                    disabled: disabled
+                }},
+            { key: 'sOG',
+                type: 'input',
+                templateOptions: {
+                    label: 'OG:',
+                    disabled: disabled
+                }},
+            { key: 'sSG',
+                type: 'input',
+                templateOptions: {
+                    label: 'SC:',
+                    disabled: disabled
+                }},
+            { key: 'sJG',
+                type: 'input',
+                templateOptions: {
+                    label: 'JG:',
+                    disabled: disabled
+                }},
+            { key: 'sMG',
+                type: 'input',
+                templateOptions: {
+                    label: 'MG:',
+                    disabled: disabled
+                }}
 
 
 

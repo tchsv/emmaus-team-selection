@@ -88,7 +88,7 @@
                     label: 'Music:',
                     disabled: disabled
                 }},
-            { key: 'A_L_T',
+            { key: 'A_T_L',
                 type: 'input',
                 templateOptions: {
                     label: 'Asst. Table Leader:',

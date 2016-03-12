@@ -1,6 +1,6 @@
 <section data-ng-controller="CommunityMembersController">
     <div class="page-header">
-        <h1>Community members</h1>
+        <h1>Community members (with Front Hall, Back Hall, Talk Count)</h1>
     </div>
 
     <div class="pull-right">
@@ -23,6 +23,9 @@
                 <td data-title="'ST'" sortable="'ST'" filter="{ 'ST': 'text' }">{{communityMember.ST}}</td>
                 <td data-title="'ZIP'" sortable="'ZIP'" filter="{ 'ZIP': 'text' }">{{communityMember.ZIP}}</td>
                 <td data-title="'Original_Walk'" sortable="'Original_Walk'" filter="{ 'Original_Walk': 'text' }">{{communityMember.Original_Walk}}</td>
+                <td data-title="'Conf Rm'" sortable="'frontHallCount(communityMember)'" filter="{ 'frontHallCount(communityMember)': 'text' }">{{frontHallCount(communityMember)}}</td>
+                <td data-title="'Back Hall'" sortable="'backHallCount(communityMember)'" filter="{ 'backHallCount(communityMember)': 'text' }">{{backHallCount(communityMember)}}</td>
+                <td data-title="'Talks'" sortable="'talkCount(communityMember)'" filter="{ 'talkCount(communityMember)': 'text' }">{{talkCount(communityMember)}}</td>
                 <td data-title="'L_D'" sortable="'L_D'" filter="{ 'L_D': 'text' }">{{communityMember.L_D}}</td>
                 <td data-title="'S_D'" sortable="'S_D'" filter="{ 'S_D': 'text' }">{{communityMember.S_D}}</td>
                 <td data-title="'A_L_D'" sortable="'A_L_D'" filter="{ 'A_L_D': 'text' }">{{communityMember.A_L_D}}</td>

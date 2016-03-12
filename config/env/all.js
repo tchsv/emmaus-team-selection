@@ -15,7 +15,8 @@ module.exports = {
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.css',
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
-				'public/lib/ng-table/ng-table.min.css'
+				'public/lib/ng-table/ng-table.min.css',
+				'public/lib/ngprogress/ngProgress.css'
 			],
 			js: [
 				'public/lib/angular/angular.js',
@@ -32,7 +33,8 @@ module.exports = {
 				'public/lib/angular-formly/dist/formly.min.js',
 				'public/lib/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.min.js',
 				'public/lib/ng-csv/build/ng-csv.min.js',
-				'public/lib/js-xlsx/dist/xlsx.full.min.js'
+				'public/lib/js-xlsx/dist/xlsx.full.min.js',
+				'public/lib/ngprogress/build/ngprogress.js',
 				//TODO if you need to add lib assets put them here please...
 			]
 		},

@@ -11,6 +11,7 @@ var mongoose = require('mongoose'),
  */
 var CommunityMemberSchema = new Schema({
     COMBO_KEY: {type: String},
+    Selected: {type: Boolean},
     LAST_NAME: {type: String},
     FIRST_NAME: {type: String},
     AC: {type: String},
@@ -24,7 +25,7 @@ var CommunityMemberSchema = new Schema({
     S_D: {type: String},
     A_L_D: {type: String},
     Mu: {type: String},
-    A_L_T: {type: String},
+    A_T_L: {type: String},
     T_L: {type: String},
     Agape: {type: String},
     M_S: {type: String},

@@ -23,7 +23,7 @@ var CommunityRawMemberSchema = new Schema({
 	S_D: {type: String},
 	A_L_D: {type: String},
 	Mu: {type: String},
-	A_L_T: {type: String},
+	A_T_L: {type: String},
 	T_L: {type: String},
 	Agape: {type: String},
 	M_S: {type: String},

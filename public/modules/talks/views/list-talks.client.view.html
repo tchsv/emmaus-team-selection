@@ -10,10 +10,19 @@
     </div>
 
     <div>
-        <table ng-table="tableParams" show-filter="true">
+        <table ng-table="tableParams" class="table table-striped table-bordered table-condensed  ng-table-responsive" show-filter="true">
             <tr ng-repeat="talk in $data">
                 <!--Add new columns for the new properties in the HTML table in public/modules/module-name/views/list-module-name.client.view.html-->
-                <td data-title="'Name'" sortable="'name'" filter="{ 'name': 'text' }">{{talk.name}}</td>
+                <!--LAST_NAME: {type: String},-->
+                <td data-title="'LAST_NAME'" sortable="'LAST_NAME'" filter="{ 'LAST_NAME': 'text' }">{{talk.LAST_NAME}}</td>
+                <!--FIRST_NAME: {type: String},-->
+                <td data-title="'FIRST_NAME'" sortable="'FIRST_NAME'" filter="{ 'FIRST_NAME': 'text' }">{{talk.FIRST_NAME}}</td>
+                <!--Original_Walk: {type: String},-->
+                <td data-title="'Original_Walk'" sortable="'Original_Walk'" filter="{ 'Original_Walk': 'text' }">{{talk.Original_Walk}}</td>
+                <!--Walk_Number: {type:String},-->
+                <td data-title="'Walk_Number'" sortable="'Walk_Number'" filter="{ 'Walk_Number': 'text' }">{{talk.Walk_Number}}</td>
+                <!--Talk: {type:String},-->
+                <td data-title="'Talk'" sortable="'Talk'" filter="{ 'Talk': 'text' }">{{talk.Talk}}</td>
                 <td>
                     <div class="table-actions">
                 <td>

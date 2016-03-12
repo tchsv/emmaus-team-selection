@@ -13,12 +13,11 @@ var mongoose = require('mongoose'),
  * Then add new columns for the new properties in the HTML table in public/modules/module-name/views/list-module-name.client.view.html
  */
 var CommitteeSchema = new Schema({
-	name: {
-		type: String,
-		default: '',
-		required: 'Please fill Committee name',
-		trim: true
-	},
+	LAST_NAME: {type: String},
+	FIRST_NAME: {type: String},
+	Original_Walk: {type: String},
+	Walk_Number: {type:String},
+	Committee: {type:String},
 	created: {
 		type: Date,
 		default: Date.now

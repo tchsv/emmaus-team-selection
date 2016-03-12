@@ -9,6 +9,10 @@ angular.module('community-members').config(['$stateProvider',
 			url: '/community-members',
 			templateUrl: 'modules/community-members/views/list-community-members.client.view.html'
 		}).
+		state('listCommunityMembersCount', {
+			url: '/community-members-count',
+			templateUrl: 'modules/community-members/views/list-community-members-count.client.view.html'
+		}).
 		state('createCommunityMember', {
 			url: '/community-members/create',
 			templateUrl: 'modules/community-members/views/create-community-member.client.view.html'

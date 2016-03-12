@@ -8,6 +8,10 @@ angular.module('community-members').factory('CommunityMembers', ['$resource',
 			update: {
 				method: 'PUT'
 			}
+			,
+			set: {
+				method: 'POST'
+			}
 		});
 	}
 ]);

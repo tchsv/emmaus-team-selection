@@ -15,10 +15,13 @@
                 <td data-title="'Selected'"><input type="checkbox" ng-model="communityMember.Selected" ng-change="selectedForTeam(communityMember)"> </td>
                 <td data-title="'LAST_NAME'" sortable="'LAST_NAME'" filter="{ 'LAST_NAME': 'text' }">{{teamMember.LAST_NAME}}</td>
                 <td data-title="'FIRST_NAME'" sortable="'FIRST_NAME'" filter="{ 'FIRST_NAME': 'text' }">{{teamMember.FIRST_NAME}}</td>
+                <td data-title="'AC'" sortable="'AC'" filter="{ 'AC': 'text' }">{{teamMember.AC}}</td>
+                <td data-title="'PHONE'" sortable="'PHONE'" filter="{ 'PHONE': 'text' }">{{teamMember.PHONE}}</td>
+                <td data-title="'STREET_ADDRESS'" sortable="'STREET_ADDRESS'" filter="{ 'STREET_ADDRESS': 'text' }">{{teamMember.STREET_ADDRESS}}</td>
+                <td data-title="'CITY'" sortable="'CITY'" filter="{ 'CITY': 'text' }">{{teamMember.CITY}}</td>
+                <td data-title="'ST'" sortable="'ST'" filter="{ 'ST': 'text' }">{{teamMember.ST}}</td>
+                <td data-title="'ZIP'" sortable="'ZIP'" filter="{ 'ZIP': 'text' }">{{teamMember.ZIP}}</td>
                 <td data-title="'Original_Walk'" sortable="'Original_Walk'" filter="{ 'Original_Walk': 'text' }">{{teamMember.Original_Walk}}</td>
-                <td data-title="'Conf Rm'" sortable="'frontHallCount(teamMember)'" filter="{ 'frontHallCount(teamMember)': 'text' }">{{frontHallCount(teamMember)}}</td>
-                <td data-title="'Back Hall'" sortable="'backHallCount(teamMember)'" filter="{ 'backHallCount(teamMember)': 'text' }">{{backHallCount(teamMember)}}</td>
-                <td data-title="'Talks'" sortable="'talkCount(teamMember)'" filter="{ 'talkCount(teamMember)': 'text' }">{{talkCount(teamMember)}}</td>
                 <td data-title="'L_D'" sortable="'L_D'" filter="{ 'L_D': 'text' }">{{teamMember.L_D}}</td>
                 <td data-title="'S_D'" sortable="'S_D'" filter="{ 'S_D': 'text' }">{{teamMember.S_D}}</td>
                 <td data-title="'A_L_D'" sortable="'A_L_D'" filter="{ 'A_L_D': 'text' }">{{teamMember.A_L_D}}</td>

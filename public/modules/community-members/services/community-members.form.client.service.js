@@ -10,6 +10,18 @@
       var getFormFields = function(disabled) {
 
         var fields = [
+            { key: 'COMBO_KEY',
+                type: 'input',
+                templateOptions: {
+                    label: 'Selected:',
+                    disabled: disabled
+                }},
+            { key: 'Selected',
+                type: 'input',
+                templateOptions: {
+                    label: 'Selected:',
+                    disabled: disabled
+                }},
             { key: 'LAST_NAME',
                 type: 'input',
                 templateOptions: {
@@ -88,7 +100,7 @@
                     label: 'Music:',
                     disabled: disabled
                 }},
-            { key: 'A_L_T',
+            { key: 'A_T_L',
                 type: 'input',
                 templateOptions: {
                     label: 'Asst. Table Leader:',
