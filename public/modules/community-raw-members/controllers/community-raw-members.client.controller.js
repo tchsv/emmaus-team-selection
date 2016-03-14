@@ -10,7 +10,7 @@ angular.module('community-raw-members').controller('CommunityRawMembersControlle
 		$scope.communityRawMember = {};
 
 		var localRawData = {};
-		var committeeList = ['L_D',  'S_D', 'A_S_D', 'A_L_D', 'A_T_L', 'T_L', 'Mu', 'Agape', 'MS', 'Ref', 'p72hr', 'Hous', 'Cnd_Lite', 'Clo', 'Wor', 'Fo_Up', 'S_Pray', 'Spo_Hr', 'Ent', 'Goph', 'Clnup', 'PP_Tech'];
+		var committeeList = ['L_D',  'S_D', 'A_S_D', 'A_L_D', 'A_T_L', 'T_L', 'Mu', 'Agape', 'M_S', 'Ref', 'p72_hr', 'Hous', 'Cnd_Lite', 'Clo', 'Wor', 'Fo_Up', 'S_Pray', 'Spo_Hr', 'Ent', 'Goph', 'Clnup', 'PP_Tech'];
 		var talkList = [ 'PER', 'MG', 'PG', 'OG', 'SG', 'JG',  'PRI', 'FD', 'PHB', 'PIE', 'S', 'CA', 'DISC', 'CW', 'BC'];
 		$scope.parseCommunityRaw = function(rawData){
 			var nowRawList = $resource('/community-raw-members?count=99999&page=1');
@@ -24,6 +24,7 @@ angular.module('community-raw-members').controller('CommunityRawMembersControlle
 		var successCurrentData = function(currentData) {
 			//compared the received data with each.
 			var communityMembersSet = [];
+            var updateCommunityMembersSet = [];
 			$scope.progressbar = ngProgressFactory.createInstance();
 			$scope.progressbar.setColor('firebrick');
 			$scope.progressbar.setHeight('15px');
@@ -51,14 +52,25 @@ angular.module('community-raw-members').controller('CommunityRawMembersControlle
 					currentData.total++;
 				}
 				else {
+                    var needsUpdate = false;
 					for (var ii = 0; ii < committeeList.length; ii++) {
-						// check for committee in this recored and append
+						// check for committee in this record and append
 						if (localRaw[committeeList[ii]]){
+                            var localRawValue = localRaw[committeeList[ii]];
+                            // check for recored alread in place
+                            var currentDataRecord = currentData.results[currentOffset];
 							if (currentData.results[currentOffset][committeeList[ii]]) {
-								currentData.results[currentOffset][committeeList[ii]] += '-' + localRaw[committeeList[ii]];
+                                // this member has a record in place now see if we already have this walk.
+								var currentCommittee = currentData.results[currentOffset][committeeList[ii]];
+								if ( currentCommittee.indexOf(localRaw[committeeList[ii]]) === -1) {
+                                    // this is new add to recored
+									currentData.results[currentOffset][committeeList[ii]] += '-' + localRaw[committeeList[ii]];
+                                    needsUpdate = true;
+								}
 							}
 							else {
 								currentData.results[currentOffset][committeeList[ii]] = localRaw[committeeList[ii]];
+                                needsUpdate = true;
 							}
 						}
 					}
@@ -66,25 +78,41 @@ angular.module('community-raw-members').controller('CommunityRawMembersControlle
 						// check for talk in this recored and append
 						if (localRaw[talkList[ii]]){
 							if (currentData.results[currentOffset][talkList[ii]]) {
-								currentData.results[currentOffset][talkList[ii]] += '-' + localRaw[talkList[ii]];
+								var currentTalk = currentData.results[currentOffset][talkList[ii]];
+								if ( currentTalk.indexOf(localRaw[talkList[ii]]) === -1) {
+									currentData.results[currentOffset][talkList[ii]] += '-' + localRaw[talkList[ii]];
+                                    needsUpdate = true;
+								}
 							}
 							else {
 								currentData.results[currentOffset][talkList[ii]] = localRaw[talkList[ii]];
+                                needsUpdate = true;
 							}
 						}
 					}
-
+                    // need to create an update array
+                    // first check to see if this is in the
+                    if (needsUpdate) {
+                        if (currentData.results[currentOffset]._id) {
+                            updateCommunityMembersSet.push(currentData.results[currentOffset]);
+                        }
+                    }
 				}
 				$scope.progressbar.set(Math.round((i/localRawData.total)*100));
 			}
 			$scope.progressbar.complete();
-			updateTheCommunityDB(communityMembersSet);
+            if ( updateCommunityMembersSet.length > 0) {
+                updateTheCommunityDB(updateCommunityMembersSet);
+            }
+            if ( communityMembersSet.length > 0 ) {
+                createTheCommunityDB(communityMembersSet);
+            }
 		};
 		var globalCommunitMembersSet;
 		var globalSizeIs;
 		var globalCurrentIs;
 		var communityMembersLocal;
-		var updateTheCommunityDB = function (dataToUpload) {
+		var createTheCommunityDB = function (dataToUpload) {
 			globalSizeIs = dataToUpload.length;
 			globalCurrentIs = 0;
 			globalCommunitMembersSet = dataToUpload;
@@ -93,12 +121,12 @@ angular.module('community-raw-members').controller('CommunityRawMembersControlle
 			$scope.progressbar.setHeight('15px');
 			$scope.progressbar.start();
 			communityMembersLocal = $resource('/community-members');
-			communityMembersLocal.save({},globalCommunitMembersSet[globalCurrentIs++]).$promise.then(successUpdateCommunity,failUpdateCommunity);
+			communityMembersLocal.save({},globalCommunitMembersSet[globalCurrentIs++]).$promise.then(successCreateCommunity,failCreateCommunity);
 
 		};
-		var successUpdateCommunity = function() {
+		var successCreateCommunity = function() {
 			if (globalCurrentIs < globalSizeIs) {
-				communityMembersLocal.save({},globalCommunitMembersSet[globalCurrentIs++]).$promise.then(successUpdateCommunity,failUpdateCommunity);
+				communityMembersLocal.save({},globalCommunitMembersSet[globalCurrentIs++]).$promise.then(successCreateCommunity,failCreateCommunity);
 				$scope.progressbar.set(Math.round((globalCurrentIs/globalSizeIs)*100));
 			}
 			else {
@@ -106,11 +134,49 @@ angular.module('community-raw-members').controller('CommunityRawMembersControlle
 
 			}
 		};
-		var failUpdateCommunity = function() {
+		var failCreateCommunity = function() {
 			$socpe.progressbar.complete();
 		};
 
-		var getComboKey = function(one) {
+        var globalUpdateSet;
+        var updateSizeIs;
+        var updateCountIs;
+        var updateCommunityMembers;
+        var updateTheCommunityDB = function (dataToUpload) {
+            updateSizeIs = dataToUpload.length;
+            updateCountIs = 0;
+            globalUpdateSet = dataToUpload;
+            $scope.progressbar = ngProgressFactory.createInstance();
+            $scope.progressbar.setColor('firebrick');
+            $scope.progressbar.setHeight('15px');
+            $scope.progressbar.start();
+            updateCommunityMembers = $resource('/community-members/:id',null,
+                {
+                    'update': { method:'PUT' }
+                });
+            updateCommunityMembers.update({id:globalUpdateSet[updateCountIs]._id},globalUpdateSet[updateCountIs]).$promise.then(successCreateCommunity,failCreateCommunity);
+
+        };
+        var successCreateCommunity = function() {
+            updateCountIs++;
+            if (updateCountIs < updateSizeIs) {
+                updateCommunityMembers.update({id:globalUpdateSet[updateCountIs]._id},globalUpdateSet[updateCountIs]).$promise.then(successCreateCommunity,failCreateCommunity);
+                $scope.progressbar.set(Math.round((updateCountIs/updateSizeIs)*100));
+            }
+            else {
+                $scope.progressbar.complete();
+
+            }
+        };
+        var failCreateCommunity = function() {
+            $socpe.progressbar.complete();
+        };
+
+
+
+
+
+        var getComboKey = function(one) {
 			return (one.LAST_NAME + '-' + one.FIRST_NAME + '-' + one.Original_Walk);
 		}
 		var keyMasterEqual= function(one, two) {

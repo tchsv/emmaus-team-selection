@@ -23,6 +23,7 @@ var CommunityMemberSchema = new Schema({
     Original_Walk: {type: String},
     L_D: {type: String},
     S_D: {type: String},
+    A_S_D: {type: String},
     A_L_D: {type: String},
     Mu: {type: String},
     A_T_L: {type: String},
@@ -41,6 +42,8 @@ var CommunityMemberSchema = new Schema({
     Goph: {type: String},
     ClnUp: {type: String},
     PP_Tech: {type: String},
+
+    PER: {type: String},
     PRI: {type: String},
     PHB: {type: String},
     PIE: {type: String},
@@ -56,6 +59,7 @@ var CommunityMemberSchema = new Schema({
     SG: {type: String},
     JG: {type: String},
     MG: {type: String},
+
     created: {
         type: Date,
         default: Date.now

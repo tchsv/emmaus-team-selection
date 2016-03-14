@@ -9,7 +9,8 @@ var mongoose = require('mongoose'),
 /**
  * Team member Schema
  */
-var TeamMemberSchema = new Schema({
+var TeamMemberSchema;
+TeamMemberSchema=new Schema({
 	COMBO_KEY: {type: String},
 	Selected: {type: Boolean},
 	LAST_NAME: {type: String},
@@ -24,6 +25,7 @@ var TeamMemberSchema = new Schema({
 	L_D: {type: String},
 	S_D: {type: String},
 	A_L_D: {type: String},
+	A_S_D: {type: String},
 	Mu: {type: String},
 	A_T_L: {type: String},
 	T_L: {type: String},
@@ -41,6 +43,8 @@ var TeamMemberSchema = new Schema({
 	Goph: {type: String},
 	ClnUp: {type: String},
 	PP_Tech: {type: String},
+
+	PER: {type: String},
 	PRI: {type: String},
 	PHB: {type: String},
 	PIE: {type: String},
@@ -59,6 +63,7 @@ var TeamMemberSchema = new Schema({
 	sL_D: {type: Boolean},
 	sS_D: {type: Boolean},
 	sA_L_D: {type: Boolean},
+	sA_S_D: {type: Boolean},
 	sMu: {type: Boolean},
 	sA_T_L: {type: Boolean},
 	sT_L: {type: Boolean},
@@ -76,6 +81,8 @@ var TeamMemberSchema = new Schema({
 	sGoph: {type: Boolean},
 	sClnUp: {type: Boolean},
 	sPP_Tech: {type: Boolean},
+
+	sPER: {type: String},
 	sPRI: {type: Boolean},
 	sPHB: {type: Boolean},
 	sPIE: {type: Boolean},
@@ -86,19 +93,19 @@ var TeamMemberSchema = new Schema({
 	sBC: {type: Boolean},
 	sP: {type: Boolean},
 	sFD: {type: Boolean},
-	sPG: {type: Boolean},
-	sOG: {type: Boolean},
-	sSG: {type: Boolean},
-	sJG: {type: Boolean},
-	sMG: {type: Boolean},
-	created: {
-		type: Date,
-		default: Date.now
-	},
-	user: {
-		type: Schema.ObjectId,
-		ref: 'User'
-	}
+    sPG: {type: Boolean},
+    sOG: {type: Boolean},
+    sSG: {type: Boolean},
+    sJG: {type: Boolean},
+    sMG: {type: Boolean},
+    created: {
+        type: Date,
+        default: Date.now
+    },
+    user: {
+        type: Schema.ObjectId,
+        ref: 'User'
+    }
 });
 
 mongoose.model('TeamMember', TeamMemberSchema);

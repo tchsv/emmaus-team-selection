@@ -94,6 +94,12 @@
                     label: 'Asst. Lay Dir:',
                     disabled: disabled
                 }},
+            { key: 'A_S_D',
+                type: 'input',
+                templateOptions: {
+                    label: 'Asst. Spiritual Dir:',
+                    disabled: disabled
+                }},
             { key: 'Mu',
                 type: 'input',
                 templateOptions: {
@@ -194,6 +200,12 @@
                 type: 'input',
                 templateOptions: {
                     label: 'Tech:',
+                    disabled: disabled
+                }},
+            { key: 'PER',
+                type: 'input',
+                templateOptions: {
+                    label: 'Priority:',
                     disabled: disabled
                 }},
             { key: 'PRI',
@@ -305,6 +317,12 @@
                     label: 'Asst. Lay Dir:',
                     disabled: disabled
                 }},
+            { key: 'sA_S_D',
+                type: 'input',
+                templateOptions: {
+                    label: 'Asst. Spiritual Dir:',
+                    disabled: disabled
+                }},
             { key: 'sMu',
                 type: 'input',
                 templateOptions: {
@@ -405,6 +423,12 @@
                 type: 'input',
                 templateOptions: {
                     label: 'Tech:',
+                    disabled: disabled
+                }},
+            { key: 'sPER',
+                type: 'input',
+                templateOptions: {
+                    label: 'Priority:',
                     disabled: disabled
                 }},
             { key: 'sPRI',

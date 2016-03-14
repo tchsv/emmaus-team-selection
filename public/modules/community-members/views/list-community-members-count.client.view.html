@@ -7,6 +7,10 @@
       <a type="button" class="btn btn-success" href="/#!/community-members/create">
         <i class="glyphicon glyphicon-open"></i> New CommunityMember
       </a>
+        <a type="button" class="btn btn-info" ng-click="updateTeamListing($data)">
+            <i class="glyphicon glyphicon-open"></i> Create Team
+        </a>
+
     </div>
 
     <div id="scrollable-area">
@@ -29,6 +33,7 @@
                 <td data-title="'L_D'" sortable="'L_D'" filter="{ 'L_D': 'text' }">{{communityMember.L_D}}</td>
                 <td data-title="'S_D'" sortable="'S_D'" filter="{ 'S_D': 'text' }">{{communityMember.S_D}}</td>
                 <td data-title="'A_L_D'" sortable="'A_L_D'" filter="{ 'A_L_D': 'text' }">{{communityMember.A_L_D}}</td>
+                <td data-title="'A_S_D'" sortable="'A_S_D'" filter="{ 'A_S_D': 'text' }">{{communityMember.A_S_D}}</td>
                 <td data-title="'Mu'" sortable="'Mu'" filter="{ 'Mu': 'text' }">{{communityMember.Mu}}</td>
                 <td data-title="'A_T_L'" sortable="'A_T_L'" filter="{ 'A_T_L': 'text' }">{{communityMember.A_T_L}}</td>
                 <td data-title="'T_L'" sortable="'T_L'" filter="{ 'T_L': 'text' }">{{communityMember.T_L}}</td>
@@ -46,6 +51,7 @@
                 <td data-title="'Goph'" sortable="'Goph'" filter="{ 'Goph': 'text' }">{{communityMember.Goph}}</td>
                 <td data-title="'Clean Up'" sortable="'ClnUp'" filter="{ 'ClnUp': 'text' }">{{communityMember.ClnUp}}</td>
                 <td data-title="'Tech'" sortable="'PP_Tech'" filter="{ 'PP_Tech': 'text' }">{{communityMember.PP_Tech}}</td>
+                <td data-title="'PER'" sortable="'PER'" filter="{ 'PER': 'text' }">{{communityMember.PER}}</td>
                 <td data-title="'Priority'" sortable="'PRI'" filter="{ 'PRI': 'text' }">{{communityMember.PRI}}</td>
                 <td data-title="'Presithood of Beleivers'" sortable="'PHB'" filter="{ 'PHB': 'text' }">{{communityMember.PHB}}</td>
                 <td data-title="'Life of Piety'" sortable="'PIE'" filter="{ 'PIE': 'text' }">{{communityMember.PIE}}</td>

@@ -20,6 +20,7 @@ var CommunityRawMemberSchema = new Schema({
 	ZIP: {type: String},
 	Original_Walk: {type: String},
 	L_D: {type: String},
+	A_S_D: {type: String},
 	S_D: {type: String},
 	A_L_D: {type: String},
 	Mu: {type: String},
@@ -39,6 +40,8 @@ var CommunityRawMemberSchema = new Schema({
 	Goph: {type: String},
 	ClnUp: {type: String},
 	PP_Tech: {type: String},
+
+	PER: {type: String},
 	PRI: {type: String},
 	PHB: {type: String},
 	PIE: {type: String},

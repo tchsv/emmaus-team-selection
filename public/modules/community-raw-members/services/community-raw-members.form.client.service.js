@@ -82,6 +82,12 @@
                     label: 'Asst. Lay Dir:',
                     disabled: disabled
                 }},
+            { key: 'A_S_D',
+                type: 'input',
+                templateOptions: {
+                    label: 'Asst. Spiritual Dir:',
+                    disabled: disabled
+                }},
             { key: 'Mu',
                 type: 'input',
                 templateOptions: {
@@ -185,6 +191,12 @@
                     disabled: disabled
                 }},
             { key: 'PRI',
+                type: 'input',
+                templateOptions: {
+                    label: 'Priority:',
+                    disabled: disabled
+                }},
+            { key: 'PER',
                 type: 'input',
                 templateOptions: {
                     label: 'Priority:',
