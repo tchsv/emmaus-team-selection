@@ -16,20 +16,36 @@
                 <td data-title="'Selected'">
                     <input type="checkbox" ng-model="teamMember.Selected" ng-change="selectedForTeam(teamMember)">
                 </td>
-                <td data-title="'___ConfRm___'">
+                <td data-title="'________ConfRm________'">
                     <label>LD<input type="checkbox" ng-model="teamMember.sL_D"
                                     ng-change="selectedForUpdate(teamMember)"></label>
                     <label>SD<input type="checkbox" ng-model="teamMember.sS_D"
-                                    ng-change="selectedForUpdate(teamMember)"></label>
+                                    ng-change="selectedForUpdate(teamMember)"></label><br/>
                     <label>ALD<input type="checkbox" ng-model="teamMember.sA_L_D"
                                      ng-change="selectedForUpdate(teamMember)"></label>
+                    <label>ALDalt<input type="checkbox" ng-model="teamMember.sA_L_Da"
+                                     ng-change="selectedForUpdate(teamMember)"></label>
+                    <label>ALDex<input type="checkbox" ng-model="teamMember.sA_L_De"
+                                     ng-change="selectedForUpdate(teamMember)"></label><br/>
                     <label>ASD<input type="checkbox" ng-model="teamMember.sA_S_D"
                                      ng-change="selectedForUpdate(teamMember)"></label>
+                    <label>ASDalt<input type="checkbox" ng-model="teamMember.sA_S_Da"
+                                     ng-change="selectedForUpdate(teamMember)"></label>
+                    <label>ASDex<input type="checkbox" ng-model="teamMember.sA_S_De"
+                                     ng-change="selectedForUpdate(teamMember)"></label><br/>
                     <label>ATL<input type="checkbox" ng-model="teamMember.sA_T_L"
                                      ng-change="selectedForUpdate(teamMember)"></label>
+                    <label>ATLalt<input type="checkbox" ng-model="teamMember.sA_T_La"
+                                     ng-change="selectedForUpdate(teamMember)"></label>
+                    <label>ATLex<input type="checkbox" ng-model="teamMember.sA_T_Le"
+                                     ng-change="selectedForUpdate(teamMember)"></label><br/>
                     <label>TL<input type="checkbox" ng-model="teamMember.sT_L"
                                     ng-change="selectedForUpdate(teamMember)"></label>
-                    <label>Misc<input type="checkbox" ng-model="teamMember.sMCR"
+                    <label>TLalt<input type="checkbox" ng-model="teamMember.sT_La"
+                                    ng-change="selectedForUpdate(teamMember)"></label>
+                    <label>TLex<input type="checkbox" ng-model="teamMember.sT_Le"
+                                    ng-change="selectedForUpdate(teamMember)"></label><br/>
+                    <label>Extra<input type="checkbox" ng-model="teamMember.sMCR"
                                     ng-change="selectedForUpdate(teamMember)"></label>
                 </td>
                 <td data-title="'______Talks______'">

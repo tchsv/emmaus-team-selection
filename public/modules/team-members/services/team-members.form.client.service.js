@@ -323,12 +323,6 @@
                     label: 'Asst. Spiritual Dir:',
                     disabled: disabled
                 }},
-            { key: 'sMu',
-                type: 'input',
-                templateOptions: {
-                    label: 'Music:',
-                    disabled: disabled
-                }},
             { key: 'sA_T_L',
                 type: 'input',
                 templateOptions: {
@@ -339,6 +333,60 @@
                 type: 'input',
                 templateOptions: {
                     label: 'Table Leader:',
+                    disabled: disabled
+                }},
+            { key: 'sA_L_Da',
+                type: 'input',
+                templateOptions: {
+                    label: 'Asst. Lay Dir:',
+                    disabled: disabled
+                }},
+            { key: 'sA_S_Da',
+                type: 'input',
+                templateOptions: {
+                    label: 'Asst. Spiritual Dir:',
+                    disabled: disabled
+                }},
+            { key: 'sA_T_La',
+                type: 'input',
+                templateOptions: {
+                    label: 'Asst. Table Leader:',
+                    disabled: disabled
+                }},
+            { key: 'sT_La',
+                type: 'input',
+                templateOptions: {
+                    label: 'Table Leader:',
+                    disabled: disabled
+                }},
+            { key: 'sA_L_De',
+                type: 'input',
+                templateOptions: {
+                    label: 'Asst. Lay Dir:',
+                    disabled: disabled
+                }},
+            { key: 'sA_S_De',
+                type: 'input',
+                templateOptions: {
+                    label: 'Asst. Spiritual Dir:',
+                    disabled: disabled
+                }},
+            { key: 'sA_T_Le',
+                type: 'input',
+                templateOptions: {
+                    label: 'Asst. Table Leader:',
+                    disabled: disabled
+                }},
+            { key: 'sT_Le',
+                type: 'input',
+                templateOptions: {
+                    label: 'Table Leader:',
+                    disabled: disabled
+                }},
+            { key: 'sMu',
+                type: 'input',
+                templateOptions: {
+                    label: 'Music:',
                     disabled: disabled
                 }},
             { key: 'sAgape',
