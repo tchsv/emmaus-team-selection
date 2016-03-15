@@ -75,7 +75,7 @@ angular.module('team-members').controller('TeamMembersController', ['$scope', '$
         $scope.cvsMe = function (tableData) {
             var deferred = $q.defer();
 
-            var nowCommunityList = $resource('/team-members?count=99999&page=1');
+            var nowCommunityList = $resource('/team-members?count=99999&page=1&sorting%5BLAST_NAME%5D=asc');
             nowCommunityList.get().$promise.then(function (teamDataResource) {
                 var teamData = teamDataResource.results;
                 var teamDataCSV = [];
@@ -84,12 +84,14 @@ angular.module('team-members').controller('TeamMembersController', ['$scope', '$
                     var rowData = {};
                     rowData.FIRST_NAME = teamData[i].FIRST_NAME;
                     rowData.LAST_NAME = teamData[i].LAST_NAME;
-                    rowData.PHONE = teamData[i].PHONE;
+                    rowData.PHONE = teamData[i].AC + '-' +teamData[i].PHONE;
                     rowData.CITY = teamData[i].CITY;
                     rowData.Original_Walk = teamData[i].Original_Walk;
                     rowData.totalWalks = $scope.backHallCount(teamData[i])+ $scope.frontHallCount(teamData[i]);
+                    rowData.ConfRoom = karensSpecialTwo(frontHallList, teamData[i]);
+                    rowData.BackHall = karensSpecialTwo(backHallList, teamData[i]);
                     for (var j = 0; j < frontHallList.length; j++) {
-                        rowData[frontHallList[j]] = teamData[i][frontHallList[j]] ? karensSpecialThree(frontHallList[j],teamData[i][frontHallList[j]]) : '-';
+                        rowData[frontHallList[j]] = teamData[i][frontHallList[j]] ? karensSpecialThree(frontHallList[j],teamData[i][frontHallList[j]],3) : '-';
                     }
                     rowData['PRI'] = teamData[i]['PRI'] ? teamData[i]['PRI'] : '-';
                     rowData['FD'] = teamData[i]['FD'] ? teamData[i]['FD'] : '-';
@@ -106,10 +108,17 @@ angular.module('team-members').controller('TeamMembersController', ['$scope', '$
             return deferred.promise;
         };
 
+        var karensSpecialTwo = function (frontBackList, data) {
+            var summaryAnswer = "";
+            for (var j = 0; j < frontBackList.length; j++) {
+                summaryAnswer += data[frontBackList[j]] ? karensSpecialThree(frontBackList[j],data[frontBackList[j]],2)+ ',' : '';
+            }
+            return summaryAnswer;
+        }
 
-        var karensSpecialThree = function (label, data) {
+        var karensSpecialThree = function (label, data, number) {
             var dataCount = data.split('-').length;
-            if (dataCount > 3 ) {
+            if (dataCount > number ) {
                 return label + '(' + dataCount + ')';
             }
             else {
