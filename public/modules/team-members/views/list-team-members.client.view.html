@@ -21,13 +21,15 @@
                                     ng-change="selectedForUpdate(teamMember)"></label>
                     <label>SD<input type="checkbox" ng-model="teamMember.sS_D"
                                     ng-change="selectedForUpdate(teamMember)"></label>
-                    <label>ALD<input type="checkbox" ng-model="teamMember.dA_L_D"
+                    <label>ALD<input type="checkbox" ng-model="teamMember.sA_L_D"
                                      ng-change="selectedForUpdate(teamMember)"></label>
-                    <label>ASD<input type="checkbox" ng-model="teamMember.dA_S_D"
+                    <label>ASD<input type="checkbox" ng-model="teamMember.sA_S_D"
                                      ng-change="selectedForUpdate(teamMember)"></label>
-                    <label>ATL<input type="checkbox" ng-model="teamMember.dA_T_L"
+                    <label>ATL<input type="checkbox" ng-model="teamMember.sA_T_L"
                                      ng-change="selectedForUpdate(teamMember)"></label>
-                    <label>TL<input type="checkbox" ng-model="teamMember.dT_L"
+                    <label>TL<input type="checkbox" ng-model="teamMember.sT_L"
+                                    ng-change="selectedForUpdate(teamMember)"></label>
+                    <label>Misc<input type="checkbox" ng-model="teamMember.sMCR"
                                     ng-change="selectedForUpdate(teamMember)"></label>
                 </td>
                 <td data-title="'______Talks______'">
@@ -77,6 +79,8 @@
                     <label>Goph<input type="checkbox" ng-model="teamMember.sGoph"
                                       ng-change="selectedForUpdate(teamMember)"></label>
                     <label>ClnUp<input type="checkbox" ng-model="teamMember.sClnUp"
+                                       ng-change="selectedForUpdate(teamMember)"></label>
+                    <label>Misc<input type="checkbox" ng-model="teamMember.sMBH"
                                        ng-change="selectedForUpdate(teamMember)"></label>
                 </td>
 
@@ -156,7 +160,9 @@
             </tr>
             <tr>
                 <a type="button" class="btn btn-success " title='Export' ng-csv="cvsMe(tableParams.data)"  filename="team_selection_test.csv">
-                    <span class="glyphicon glyphicon-export"></span>Export Test To CSV</a>
+                    <span class="glyphicon glyphicon-export"></span>Export Basic Information</a>
+                <a type="button" class="btn btn-success " title='Export' ng-csv="createTeamSelectionForm(tableParams.data)"  filename="team_selection_form.csv">
+                    <span class="glyphicon glyphicon-export"></span>Export Team Selection Form</a>
                 <!--<a type="button" class="btn btn-danger " title='Export' ng-click="pushDataToMainTables(tableParams.data)"  >-->
                     <!--<span class="glyphicon glyphicon-bullhorn"></span>Push To Main Tables</a>-->
                 <!--<a type="button" class="btn btn-success " title='Export' ng-csv="cvsLastDayList(tableParams.data)"  filename="confRoomLastDay.csv">-->

@@ -520,6 +520,18 @@
                 templateOptions: {
                     label: 'MG:',
                     disabled: disabled
+                }},
+            { key: 'sMBH',
+                type: 'input',
+                templateOptions: {
+                    label: 'MBH:',
+                    disabled: disabled
+                }},
+            { key: 'sMCR',
+                type: 'input',
+                templateOptions: {
+                    label: 'MCR:',
+                    disabled: disabled
                 }}
 
 

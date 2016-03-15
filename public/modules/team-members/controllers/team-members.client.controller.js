@@ -1,7 +1,7 @@
 'use strict';
 
 // Team members controller
-angular.module('team-members').controller('TeamMembersController', ['$scope', '$q', '$resource' ,'$stateParams', '$location', 'Authentication', 'TeamMembers', 'TableSettings', 'TeamMembersForm',
+angular.module('team-members').controller('TeamMembersController', ['$scope', '$q', '$resource', '$stateParams', '$location', 'Authentication', 'TeamMembers', 'TableSettings', 'TeamMembersForm',
     function ($scope, $q, $resource, $stateParams, $location, Authentication, TeamMembers, TableSettings, TeamMembersForm) {
         $scope.authentication = Authentication;
         $scope.tableParams = TableSettings.getParams(TeamMembers);
@@ -67,11 +67,103 @@ angular.module('team-members').controller('TeamMembersController', ['$scope', '$
         var committeeList = ['L_D', 'S_D', 'A_S_D', 'A_L_D', 'A_T_L', 'T_L', 'Mu', 'Agape', 'M_S', 'Ref', 'p72_hr', 'Hous', 'Cnd_Lite', 'Clo', 'Wor', 'Fo_Up', 'S_Pray', 'Spo_Hr', 'Ent', 'Goph', 'ClnUp', 'PP_Tech'];
         var frontHallList = ['L_D', 'S_D', 'A_S_D', 'A_L_D', 'A_T_L', 'T_L'];
         var backHallList = ['Mu', 'Agape', 'M_S', 'Ref', 'p72_hr', 'Hous', 'Cnd_Lite', 'Clo', 'Wor', 'Fo_Up', 'S_Pray', 'Spo_Hr', 'Ent', 'Goph', 'ClnUp', 'PP_Tech'];
+        var selectFrontHallList = ['sL_D', 'sS_D', 'sA_S_D', 'sA_L_D', 'sA_T_L', 'sT_L', 'sMCR'];
+        var selectBackHallList = ['sMu', 'sPP_Tech', 'sAgape', 'sM_S', 'sRef', 'sp72_hr', 'sHous', 'sCnd_Lite', 'sClo', 'sWor', 'sFo_Up', 'sS_Pray', 'sSpo_Hr', 'sEnt', 'sGoph', 'sClnUp', 'sMBH'];
         var talkList = ['PER', 'MG', 'PG', 'OG', 'SG', 'JG', 'PRI', 'FD', 'PHB', 'PIE', 'S', 'CA', 'DISC', 'CW', 'BC'];
+        var selectedTalkList = ['sPER', 'sMG', 'sPG', 'sOG', 'sSG', 'sJG', 'sPRI', 'sFD', 'sPHB', 'sPIE', 'sS', 'sCA', 'sDISC', 'sCW', 'sBC'];
+        var selectedTalkTitle = {'sPER':'Perseverance', 'sMG':'Means', 'sPG':'Prevenient', 'sOG':'Obstacles', 'sSG':'Sanctifying', 'sJG':'Justifying'
+            , 'sPRI':'Priority', 'sFD':'Forth Day', 'sPHB':'Priesthood', 'sPIE':'Piety'
+            , 'sS':'Study', 'sCA':'Christian Action', 'sDISC':'Discipleship', 'sCW':'Chg Our World', 'sBC':'Body Of Christ'};
 
-        var testRow = ['FIRS']
+        var testRow = ['FIRS'];
 
+        var generateRowHeader = function () {
+            var rowData = {};
+            rowData.TeamAssignment = ' ';
+            rowData.FIRST_NAME = ' ';
+            rowData.LAST_NAME = ' ';
+            rowData.PHONE = ' ';
+            rowData.CITY = ' ';
+            rowData.Original_Walk = ' ';
+            rowData.totalWalks = ' ';
+            rowData.ServiceRecord = ' ';
+            var headerArray = Object.keys(rowData);
+            return headerArray;
+        };
+        var generateRowEspecial = function (firstColumn) {
+            var rowData = {};
+            rowData.TeamAssignment = firstColumn;
+            rowData.FIRST_NAME = ' ';
+            rowData.LAST_NAME = ' ';
+            rowData.PHONE = ' ';
+            rowData.CITY = ' ';
+            rowData.Original_Walk = ' ';
+            rowData.totalWalks = ' ';
+            rowData.ServiceRecord = ' ';
+            return rowData;
+        };
+        var getIsChairOrTalk = function(teamRow) {
+            for ( var jjj in selectedTalkList ) {
+                if (teamRow[selectedTalkList[jjj]]) {
+                    return selectedTalkTitle[selectedTalkList[jjj]];
+                }
+            }
+            return ' ';
+        }
 
+        $scope.createTeamSelectionForm = function (tableData) {
+            var deferred = $q.defer();
+
+            var nowCommunityList = $resource('/team-members?count=99999&page=1&sorting%5BLAST_NAME%5D=asc');
+            nowCommunityList.get().$promise.then(function (teamDataResource) {
+                var teamData = teamDataResource.results;
+                var teamDataCSV = [];
+                var headerArray = generateRowHeader();
+                teamDataCSV.push(headerArray);
+                for (var pos = 0; pos < selectFrontHallList.length; pos++) {
+                    var currentPos = selectFrontHallList[pos];
+                    var subHeaderArray = generateRowEspecial(currentPos);
+                    teamDataCSV.push(subHeaderArray);
+                    for (var i = 0; i < teamData.length; i++) {
+                        if (teamData[i][currentPos]) {
+                            var rowData = {};
+                            rowData.TeamAssignment = getIsChairOrTalk(teamData[i]);
+                            rowData.FIRST_NAME = teamData[i].FIRST_NAME;
+                            rowData.LAST_NAME = teamData[i].LAST_NAME;
+                            rowData.PHONE = teamData[i].AC + '-' + teamData[i].PHONE;
+                            rowData.CITY = teamData[i].CITY;
+                            rowData.Original_Walk = teamData[i].Original_Walk;
+                            rowData.totalWalks = $scope.backHallCount(teamData[i]) + $scope.frontHallCount(teamData[i]);
+                            rowData.ServiceRecord = karensSpecialTwo(frontHallList, teamData[i]) + ' ' + karensSpecialTwo(backHallList, teamData[i]);
+                            teamDataCSV.push(rowData);
+                        }
+                    }
+                }
+                for (var pos = 0; pos < selectBackHallList.length; pos++) {
+                    var currentPos = selectBackHallList[pos];
+                    var subHeaderArray = generateRowEspecial(currentPos);
+                    teamDataCSV.push(subHeaderArray);
+                    for (var i = 0; i < teamData.length; i++) {
+                        if (teamData[i][currentPos]) {
+                            var rowData = {};
+                            rowData.TeamAssignment = getIsChairOrTalk(teamData[i]);
+                            rowData.FIRST_NAME = teamData[i].FIRST_NAME;
+                            rowData.LAST_NAME = teamData[i].LAST_NAME;
+                            rowData.PHONE = teamData[i].AC + '-' + teamData[i].PHONE;
+                            rowData.CITY = teamData[i].CITY;
+                            rowData.Original_Walk = teamData[i].Original_Walk;
+                            rowData.totalWalks = $scope.backHallCount(teamData[i]) + $scope.frontHallCount(teamData[i]);
+                            rowData.ServiceRecord = karensSpecialTwo(frontHallList, teamData[i]) + '; ' + karensSpecialTwo(backHallList, teamData[i]);
+                            teamDataCSV.push(rowData);
+                        }
+                    }
+                }
+                deferred.resolve(teamDataCSV);
+            });
+
+            return deferred.promise;
+
+        };
         $scope.cvsMe = function (tableData) {
             var deferred = $q.defer();
 
@@ -84,18 +176,18 @@ angular.module('team-members').controller('TeamMembersController', ['$scope', '$
                     var rowData = {};
                     rowData.FIRST_NAME = teamData[i].FIRST_NAME;
                     rowData.LAST_NAME = teamData[i].LAST_NAME;
-                    rowData.PHONE = teamData[i].AC + '-' +teamData[i].PHONE;
+                    rowData.PHONE = teamData[i].AC + '-' + teamData[i].PHONE;
                     rowData.CITY = teamData[i].CITY;
                     rowData.Original_Walk = teamData[i].Original_Walk;
-                    rowData.totalWalks = $scope.backHallCount(teamData[i])+ $scope.frontHallCount(teamData[i]);
+                    rowData.totalWalks = $scope.backHallCount(teamData[i]) + $scope.frontHallCount(teamData[i]);
                     rowData.ConfRoom = karensSpecialTwo(frontHallList, teamData[i]);
                     rowData.BackHall = karensSpecialTwo(backHallList, teamData[i]);
                     for (var j = 0; j < frontHallList.length; j++) {
-                        rowData[frontHallList[j]] = teamData[i][frontHallList[j]] ? karensSpecialThree(frontHallList[j],teamData[i][frontHallList[j]],3) : '-';
+                        rowData[frontHallList[j]] = teamData[i][frontHallList[j]] ? karensSpecialThree(frontHallList[j], teamData[i][frontHallList[j]], 3) : '-';
                     }
                     rowData['PRI'] = teamData[i]['PRI'] ? teamData[i]['PRI'] : '-';
                     rowData['FD'] = teamData[i]['FD'] ? teamData[i]['FD'] : '-';
-                    if(pushHeaders) {
+                    if (pushHeaders) {
                         var headerArray = Object.keys(rowData);
                         teamDataCSV.push(headerArray);
                         pushHeaders = false;
@@ -111,20 +203,20 @@ angular.module('team-members').controller('TeamMembersController', ['$scope', '$
         var karensSpecialTwo = function (frontBackList, data) {
             var summaryAnswer = "";
             for (var j = 0; j < frontBackList.length; j++) {
-                summaryAnswer += data[frontBackList[j]] ? karensSpecialThree(frontBackList[j],data[frontBackList[j]],2)+ ',' : '';
+                summaryAnswer += data[frontBackList[j]] ? karensSpecialThree(frontBackList[j], data[frontBackList[j]], 2) + ',' : '';
             }
             return summaryAnswer;
-        }
+        };
 
         var karensSpecialThree = function (label, data, number) {
             var dataCount = data.split('-').length;
-            if (dataCount > number ) {
+            if (dataCount > number) {
                 return label + '(' + dataCount + ')';
             }
             else {
                 return label + '-' + data + ' ';
             }
-        }
+        };
 
         $scope.backHallCount = function (thisPerson) {
 

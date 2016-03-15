@@ -98,6 +98,8 @@ TeamMemberSchema=new Schema({
     sSG: {type: Boolean},
     sJG: {type: Boolean},
     sMG: {type: Boolean},
+	sMBH: {type: Boolean},
+	sMCR: {type: Boolean},
     created: {
         type: Date,
         default: Date.now
