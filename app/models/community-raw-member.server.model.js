@@ -34,6 +34,7 @@ var CommunityRawMemberSchema = new Schema({
 	Cnd_Lite: {type: String},
 	Clo: {type: String},
 	Ent: {type: String},
+	Fo_Up: {type: String},
 	S_Pray: {type: String},
 	Spo_Hr: {type: String},
 	Wor: {type: String},

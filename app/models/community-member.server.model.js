@@ -37,6 +37,7 @@ var CommunityMemberSchema = new Schema({
     Clo: {type: String},
     Ent: {type: String},
     S_Pray: {type: String},
+    Fo_Up: {type: String},
     Spo_Hr: {type: String},
     Wor: {type: String},
     Goph: {type: String},

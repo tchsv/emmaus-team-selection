@@ -66,13 +66,18 @@ angular.module('team-members').controller('TeamMembersController', ['$scope', '$
 //var title for output FirstName LastName OrgWalk totalWalks confRoom Talks (prioty or 4th day)
         var committeeList = ['L_D', 'S_D', 'A_S_D', 'A_L_D', 'A_T_L', 'T_L', 'Mu', 'Agape', 'M_S', 'Ref', 'p72_hr', 'Hous', 'Cnd_Lite', 'Clo', 'Wor', 'Fo_Up', 'S_Pray', 'Spo_Hr', 'Ent', 'Goph', 'ClnUp', 'PP_Tech','P'];
         var frontHallList = ['L_D', 'S_D', 'A_S_D', 'A_L_D', 'A_T_L', 'T_L'];
-        var backHallList = ['Mu', 'Agape', 'M_S', 'Ref', 'p72_hr', 'Hous', 'Cnd_Lite', 'Clo', 'Wor', 'Fo_Up', 'S_Pray', 'Spo_Hr', 'Ent', 'Goph', 'ClnUp', 'PP_Tech','P'];
+        var backHallList = ['Mu', 'Agape', 'M_S', 'Ref', 'p72_hr', 'Hous', 'Cnd_Lite', 'Clo', 'Wor', 'Fo_Up','Foto', 'S_Pray', 'Spo_Hr', 'Ent', 'Goph', 'ClnUp', 'PP_Tech','P'];
         //var selectFrontHallList = ['sL_D', 'sS_D', 'sA_S_D', 'sA_L_D', 'sA_T_L', 'sT_L', 'sMCR'];
         var selectFrontHallList = ['sL_D', 'sS_D', 'sA_S_D','sA_S_Da','sA_S_De', 'sA_L_D','sA_L_Da','sA_L_De', 'sA_T_L','sA_T_La','sA_T_Le', 'sT_L','sT_La','sT_Le', 'sMCR'];
-        var selectBackHallList = ['sMu', 'sPP_Tech', 'sAgape', 'sM_S', 'sRef', 'sp72_hr', 'sHous', 'sCnd_Lite', 'sClo', 'sWor', 'sFo_Up', 'sS_Pray', 'sSpo_Hr', 'sEnt', 'sGoph', 'sClnUp', 'sMBH', 'sP'];
         var selectFrontHallTitle = {'sL_D':'Lay Director', 'sS_D':'Spirtual Director', 'sA_S_D':'Asst. Spirtual Director'
             ,'sA_S_Da':'Alternate','sA_S_De':'Extra', 'sA_L_D':'Asst. Lay Director','sA_L_Da':'Alternate','sA_L_De':'Extra'
             , 'sA_T_L':'Asst. Table Leader','sA_T_La':'Alternate','sA_T_Le':'Extra', 'sT_L':'Table Leader','sT_La':'Alternate','sT_Le':'Extra', 'sMCR':'Conf Rm Extra'};
+        var selectBackHallList = ['sMu', 'sPP_Tech', 'sAgape', 'sM_S', 'sRef', 'sp72_hr', 'sHous', 'sCnd_Lite', 'sClo', 'sWor', 'sFo_Up','sFoto', 'sS_Pray', 'sSpo_Hr', 'sEnt', 'sGoph', 'sClnUp', 'sMBH', 'sP'];
+        var selectBackHallTitle = {'sMu':'Music','sMua':'Alternate', 'sPP_Tech':'Tech', 'sAgape':'Agape',
+            'sM_S':'Meal Service', 'sRef':'Refreshments', 'sp72_hr':'72 hour', 'sHous':'Housing',
+            'sCnd_Lite':'Candlelight', 'sClo':'Closing', 'sWor':'Worship', 'sFo_Up':'Follow Up',
+            'sFoto':'Photographer', 'sS_Pray':'Speakers Prayer Chap', 'sSpo_Hr':'Sponsers Hour', 'sEnt':'Entertainment',
+            'sGoph':'Humble Servant', 'sClnUp':'Clean Up', 'sMBH':'Extra Back Hall'};
         var talkList = ['PER', 'MG', 'PG', 'OG', 'SG', 'JG', 'PRI', 'FD', 'PHB', 'PIE', 'S', 'CA', 'DISC', 'CW', 'BC'];
         var selectedTalkList = ['sPER', 'sMG', 'sPG', 'sOG', 'sSG', 'sJG', 'sPRI', 'sFD', 'sPHB', 'sPIE', 'sS', 'sCA', 'sDISC', 'sCW', 'sBC'];
         var selectedTalkTitle = {'sPER':'Perseverance', 'sMG':'Means', 'sPG':'Prevenient', 'sOG':'Obstacles', 'sSG':'Sanctifying', 'sJG':'Justifying'
@@ -126,6 +131,7 @@ angular.module('team-members').controller('TeamMembersController', ['$scope', '$
                 teamDataCSV.push(headerArray);
                 for (var pos = 0; pos < selectFrontHallList.length; pos++) {
                     var currentPos = selectFrontHallList[pos];
+                    teamDataCSV.push(generateRowEspecial(' '));
                     var subHeaderArray = generateRowEspecial(selectFrontHallTitle[currentPos]);
                     teamDataCSV.push(subHeaderArray);
                     for (var i = 0; i < teamData.length; i++) {
@@ -145,7 +151,8 @@ angular.module('team-members').controller('TeamMembersController', ['$scope', '$
                 }
                 for (var pos = 0; pos < selectBackHallList.length; pos++) {
                     var currentPos = selectBackHallList[pos];
-                    var subHeaderArray = generateRowEspecial(currentPos);
+                    teamDataCSV.push(generateRowEspecial(' '));
+                    var subHeaderArray = generateRowEspecial(selectBackHallTitle[currentPos]);
                     teamDataCSV.push(subHeaderArray);
                     for (var i = 0; i < teamData.length; i++) {
                         if (teamData[i][currentPos]) {

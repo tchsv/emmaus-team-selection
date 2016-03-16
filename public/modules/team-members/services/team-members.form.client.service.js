@@ -178,6 +178,18 @@
                     label: 'Sponsers Hour:',
                     disabled: disabled
                 }},
+            { key: 'Fo_up',
+                type: 'input',
+                templateOptions: {
+                    label: 'Follow Up:',
+                    disabled: disabled
+                }},
+            { key: 'Foto',
+                type: 'input',
+                templateOptions: {
+                    label: 'Photographer:',
+                    disabled: disabled
+                }},
             { key: 'Wor',
                 type: 'input',
                 templateOptions: {
@@ -449,6 +461,18 @@
                     label: 'Sponsers Hour:',
                     disabled: disabled
                 }},
+            { key: 'sFo_up',
+                type: 'input',
+                templateOptions: {
+                    label: 'Follow Up:',
+                    disabled: disabled
+                }},
+            { key: 'sFoto',
+                type: 'input',
+                templateOptions: {
+                    label: 'Photographer:',
+                    disabled: disabled
+                }},
             { key: 'sWor',
                 type: 'input',
                 templateOptions: {
@@ -476,7 +500,7 @@
             { key: 'sPER',
                 type: 'input',
                 templateOptions: {
-                    label: 'Priority:',
+                    label: 'Perseverance:',
                     disabled: disabled
                 }},
             { key: 'sPRI',
@@ -500,31 +524,31 @@
             { key: 'sS',
                 type: 'input',
                 templateOptions: {
-                    label: 'S:',
+                    label: 'Study:',
                     disabled: disabled
                 }},
             { key: 'sCA',
                 type: 'input',
                 templateOptions: {
-                    label: 'CA:',
+                    label: 'Christian Action:',
                     disabled: disabled
                 }},
             { key: 'sDISC',
                 type: 'input',
                 templateOptions: {
-                    label: 'DISC:',
+                    label: 'Discipleship:',
                     disabled: disabled
                 }},
             { key: 'sCW',
                 type: 'input',
                 templateOptions: {
-                    label: 'CW:',
+                    label: 'Changing Our World:',
                     disabled: disabled
                 }},
             { key: 'sBC',
                 type: 'input',
                 templateOptions: {
-                    label: 'BC:',
+                    label: 'Body Of Christ:',
                     disabled: disabled
                 }},
             { key: 'sP',
