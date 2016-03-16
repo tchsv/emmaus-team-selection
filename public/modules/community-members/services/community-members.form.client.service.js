@@ -13,7 +13,7 @@
             { key: 'COMBO_KEY',
                 type: 'input',
                 templateOptions: {
-                    label: 'Selected:',
+                    label: 'key:',
                     disabled: disabled
                 }},
             { key: 'Selected',
@@ -28,7 +28,7 @@
                     label: 'Last Name:',
                     disabled: disabled
                 }},
-            { key: '    FIRST_NAME',
+            { key: 'FIRST_NAME',
                 type: 'input',
                 templateOptions: {
                     label: 'First Name:',

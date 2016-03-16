@@ -64,12 +64,12 @@ angular.module('team-members').controller('TeamMembersController', ['$scope', '$
         };
 
 //var title for output FirstName LastName OrgWalk totalWalks confRoom Talks (prioty or 4th day)
-        var committeeList = ['L_D', 'S_D', 'A_S_D', 'A_L_D', 'A_T_L', 'T_L', 'Mu', 'Agape', 'M_S', 'Ref', 'p72_hr', 'Hous', 'Cnd_Lite', 'Clo', 'Wor', 'Fo_Up', 'S_Pray', 'Spo_Hr', 'Ent', 'Goph', 'ClnUp', 'PP_Tech'];
+        var committeeList = ['L_D', 'S_D', 'A_S_D', 'A_L_D', 'A_T_L', 'T_L', 'Mu', 'Agape', 'M_S', 'Ref', 'p72_hr', 'Hous', 'Cnd_Lite', 'Clo', 'Wor', 'Fo_Up', 'S_Pray', 'Spo_Hr', 'Ent', 'Goph', 'ClnUp', 'PP_Tech','P'];
         var frontHallList = ['L_D', 'S_D', 'A_S_D', 'A_L_D', 'A_T_L', 'T_L'];
-        var backHallList = ['Mu', 'Agape', 'M_S', 'Ref', 'p72_hr', 'Hous', 'Cnd_Lite', 'Clo', 'Wor', 'Fo_Up', 'S_Pray', 'Spo_Hr', 'Ent', 'Goph', 'ClnUp', 'PP_Tech'];
+        var backHallList = ['Mu', 'Agape', 'M_S', 'Ref', 'p72_hr', 'Hous', 'Cnd_Lite', 'Clo', 'Wor', 'Fo_Up', 'S_Pray', 'Spo_Hr', 'Ent', 'Goph', 'ClnUp', 'PP_Tech','P'];
         //var selectFrontHallList = ['sL_D', 'sS_D', 'sA_S_D', 'sA_L_D', 'sA_T_L', 'sT_L', 'sMCR'];
         var selectFrontHallList = ['sL_D', 'sS_D', 'sA_S_D','sA_S_Da','sA_S_De', 'sA_L_D','sA_L_Da','sA_L_De', 'sA_T_L','sA_T_La','sA_T_Le', 'sT_L','sT_La','sT_Le', 'sMCR'];
-        var selectBackHallList = ['sMu', 'sPP_Tech', 'sAgape', 'sM_S', 'sRef', 'sp72_hr', 'sHous', 'sCnd_Lite', 'sClo', 'sWor', 'sFo_Up', 'sS_Pray', 'sSpo_Hr', 'sEnt', 'sGoph', 'sClnUp', 'sMBH'];
+        var selectBackHallList = ['sMu', 'sPP_Tech', 'sAgape', 'sM_S', 'sRef', 'sp72_hr', 'sHous', 'sCnd_Lite', 'sClo', 'sWor', 'sFo_Up', 'sS_Pray', 'sSpo_Hr', 'sEnt', 'sGoph', 'sClnUp', 'sMBH', 'sP'];
         var selectFrontHallTitle = {'sL_D':'Lay Director', 'sS_D':'Spirtual Director', 'sA_S_D':'Asst. Spirtual Director'
             ,'sA_S_Da':'Alternate','sA_S_De':'Extra', 'sA_L_D':'Asst. Lay Director','sA_L_Da':'Alternate','sA_L_De':'Extra'
             , 'sA_T_L':'Asst. Table Leader','sA_T_La':'Alternate','sA_T_Le':'Extra', 'sT_L':'Table Leader','sT_La':'Alternate','sT_Le':'Extra', 'sMCR':'Conf Rm Extra'};
