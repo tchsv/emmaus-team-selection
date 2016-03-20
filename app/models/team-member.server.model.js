@@ -77,6 +77,7 @@ TeamMemberSchema=new Schema({
 	sA_T_Le: {type: Boolean},
 	sT_Le: {type: Boolean},
 	sMu: {type: Boolean},
+	sMua: {type: Boolean},
 	sAgape: {type: Boolean},
 	sM_S: {type: Boolean},
 	sRef: {type: Boolean},

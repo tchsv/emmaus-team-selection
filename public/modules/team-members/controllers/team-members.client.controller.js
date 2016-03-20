@@ -63,6 +63,9 @@ angular.module('team-members').controller('TeamMembersController', ['$scope', '$
             $scope.setFormFields(false);
         };
 
+        $scope.confRoomHideRows = true;
+        $scope.talksHideRows = true;
+        $scope.backHallHideRows = true;
 //var title for output FirstName LastName OrgWalk totalWalks confRoom Talks (prioty or 4th day)
         var committeeList = ['L_D', 'S_D', 'A_S_D', 'A_L_D', 'A_T_L', 'T_L', 'Mu', 'Agape', 'M_S', 'Ref', 'p72_hr', 'Hous', 'Cnd_Lite', 'Clo', 'Wor', 'Fo_Up', 'S_Pray', 'Spo_Hr', 'Ent', 'Goph', 'ClnUp', 'PP_Tech','P'];
         var frontHallList = ['L_D', 'S_D', 'A_S_D', 'A_L_D', 'A_T_L', 'T_L'];
@@ -72,7 +75,7 @@ angular.module('team-members').controller('TeamMembersController', ['$scope', '$
         var selectFrontHallTitle = {'sL_D':'Lay Director', 'sS_D':'Spirtual Director', 'sA_S_D':'Asst. Spirtual Director'
             ,'sA_S_Da':'Alternate','sA_S_De':'Extra', 'sA_L_D':'Asst. Lay Director','sA_L_Da':'Alternate','sA_L_De':'Extra'
             , 'sA_T_L':'Asst. Table Leader','sA_T_La':'Alternate','sA_T_Le':'Extra', 'sT_L':'Table Leader','sT_La':'Alternate','sT_Le':'Extra', 'sMCR':'Conf Rm Extra'};
-        var selectBackHallList = ['sMu', 'sPP_Tech', 'sAgape', 'sM_S', 'sRef', 'sp72_hr', 'sHous', 'sCnd_Lite', 'sClo', 'sWor', 'sFo_Up','sFoto', 'sS_Pray', 'sSpo_Hr', 'sEnt', 'sGoph', 'sClnUp', 'sMBH', 'sP'];
+        var selectBackHallList = ['sMu','sMua', 'sPP_Tech', 'sAgape', 'sM_S', 'sRef', 'sp72_hr', 'sHous', 'sCnd_Lite', 'sClo', 'sWor', 'sFo_Up','sFoto', 'sS_Pray', 'sSpo_Hr', 'sEnt', 'sGoph', 'sClnUp', 'sMBH', 'sP'];
         var selectBackHallTitle = {'sMu':'Music','sMua':'Alternate', 'sPP_Tech':'Tech', 'sAgape':'Agape',
             'sM_S':'Meal Service', 'sRef':'Refreshments', 'sp72_hr':'72 hour', 'sHous':'Housing',
             'sCnd_Lite':'Candlelight', 'sClo':'Closing', 'sWor':'Worship', 'sFo_Up':'Follow Up',

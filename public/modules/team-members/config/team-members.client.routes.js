@@ -9,6 +9,10 @@ angular.module('team-members').config(['$stateProvider',
 			url: '/team-members',
 			templateUrl: 'modules/team-members/views/list-team-members.client.view.html'
 		}).
+		state('listTeamMembersSummary', {
+			url: '/team-members-summary',
+			templateUrl: 'modules/team-members/views/list-team-members-summary.client.view.html'
+		}).
 		state('createTeamMember', {
 			url: '/team-members/create',
 			templateUrl: 'modules/team-members/views/create-team-member.client.view.html'

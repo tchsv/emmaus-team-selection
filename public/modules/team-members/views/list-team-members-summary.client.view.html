@@ -1,0 +1,181 @@
+<section data-ng-controller="TeamMembersController">
+    <div class="page-header">
+        <h1>Team members</h1>
+    </div>
+
+    <div class="pull-right">
+        <a type="button" class="btn btn-success" href="/#!/team-members/create">
+            <i class="glyphicon glyphicon-open"></i> New TeamMember
+        </a>
+    </div>
+
+    <div>
+        <table ng-table="tableParams" class="table table-striped table-bordered table-condensed  ng-table-responsive"
+               show-filter="true">
+            <tr ng-repeat="teamMember in $data">
+                <td data-title="'Selected'">
+                    <input type="checkbox" ng-model="teamMember.Selected" ng-change="selectedForTeam(teamMember)">
+                </td>
+                <td data-title="'ConfRm'">
+                    <a href="" ng-click="confRoomHideRows = !confRoomHideRows">
+                    <span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': confRoomHideRows, 'glyphicon-chevron-down': !confRoomHideRows }"></span>
+                        </a>
+                    <label ng-if="!confRoomHideRows || teamMember.sL_D">LD<input type="checkbox" ng-model="teamMember.sL_D"
+                                                              ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!confRoomHideRows || teamMember.sS_D" l>SD<input type="checkbox" ng-model="teamMember.sS_D"
+                                                                ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!confRoomHideRows || teamMember.sA_L_D">ALD<input type="checkbox" ng-model="teamMember.sA_L_D"
+                                                                 ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!confRoomHideRows || teamMember.sA_L_Da">ALDalt<input type="checkbox" ng-model="teamMember.sA_L_Da"
+                                                                     ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!confRoomHideRows || teamMember.sA_L_De">ALDex<input type="checkbox" ng-model="teamMember.sA_L_De"
+                                                                    ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!confRoomHideRows || teamMember.sA_S_D">ASD<input type="checkbox" ng-model="teamMember.sA_S_D"
+                                                                 ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!confRoomHideRows || teamMember.sA_S_Da">ASDalt<input type="checkbox" ng-model="teamMember.sA_S_Da"
+                                                                     ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!confRoomHideRows || teamMember.sA_S_De">ASDex<input type="checkbox" ng-model="teamMember.sA_S_De"
+                                                                    ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!confRoomHideRows || teamMember.sA_T_L">ATL<input type="checkbox" ng-model="teamMember.sA_T_L"
+                                                                 ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!confRoomHideRows || teamMember.sA_T_La">ATLalt<input type="checkbox" ng-model="teamMember.sA_T_La"
+                                                                     ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!confRoomHideRows || teamMember.sA_T_Le">ATLex<input type="checkbox" ng-model="teamMember.sA_T_Le"
+                                                                    ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!confRoomHideRows || teamMember.sT_L">TL<input type="checkbox" ng-model="teamMember.sT_L"
+                                                              ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!confRoomHideRows || teamMember.sT_La">TLalt<input type="checkbox" ng-model="teamMember.sT_La"
+                                                                  ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!confRoomHideRows || teamMember.sT_Le">TLex<input type="checkbox" ng-model="teamMember.sT_Le"
+                                                                 ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!confRoomHideRows || teamMember.sMCR">Extra<input type="checkbox" ng-model="teamMember.sMCR"
+                                                                 ng-change="selectedForUpdate(teamMember)"></label>
+                </td>
+                <td data-title="'Talks'">
+                    <a href="" ng-click="talksHideRows = !talksHideRows">
+                        <span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': talksHideRows, 'glyphicon-chevron-down': !talksHideRows }"></span>
+                    </a>
+                    <label ng-if="!talksHideRows || teamMember.sPER">PER<input type="checkbox" ng-model="teamMember.sPER"
+                                                               ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!talksHideRows || teamMember.sPRI">PRI<input type="checkbox" ng-model="teamMember.sPRI"
+                                                               ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!talksHideRows || teamMember.sPHB">PHB<input type="checkbox" ng-model="teamMember.sPHB"
+                                                               ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!talksHideRows || teamMember.sPIE">LPIE<input type="checkbox" ng-model="teamMember.sPIE"
+                                                                ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!talksHideRows || teamMember.sS">S<input type="checkbox" ng-model="teamMember.sS"
+                                                           ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!talksHideRows || teamMember.sCA">CA<input type="checkbox" ng-model="teamMember.sCA"
+                                                             ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!talksHideRows || teamMember.sDISC">DISC<input type="checkbox" ng-model="teamMember.sDISC"
+                                                                 ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!talksHideRows || teamMember.sCW">CW<input type="checkbox" ng-model="teamMember.sCW"
+                                                             ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!talksHideRows || teamMember.sBC">BC<input type="checkbox" ng-model="teamMember.sBC"
+                                                             ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!talksHideRows || teamMember.sFD">FD<input type="checkbox" ng-model="teamMember.sFD"
+                                                             ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!talksHideRows || teamMember.sPG">PG<input type="checkbox" ng-model="teamMember.sPG"
+                                                             ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!talksHideRows || teamMember.sOG">OG<input type="checkbox" ng-model="teamMember.sOG"
+                                                             ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!talksHideRows || teamMember.sSG">SG<input type="checkbox" ng-model="teamMember.sSG"
+                                                             ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!talksHideRows || teamMember.sJG">JG<input type="checkbox" ng-model="teamMember.sJG"
+                                                             ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!talksHideRows || teamMember.sMG">MG<input type="checkbox" ng-model="teamMember.sMG"
+                                                             ng-change="selectedForUpdate(teamMember)"></label>
+                </td>
+                <td data-title="'BackHall'">
+                    <a href="" ng-click="backHallHideRows = !backHallHideRows">
+                        <span class="glyphicon" ng-class="{ 'glyphicon-chevron-right': backHallHideRows, 'glyphicon-chevron-down': !backHallHideRows }"></span>
+                    </a>
+                    <label ng-if="!backHallHideRows || teamMember.sMu"l>Mu<input type="checkbox" ng-model="teamMember.sMu" ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!backHallHideRows || teamMember.sMua">Alternate<input type="checkbox" ng-model="teamMember.sMua"
+                                           ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!backHallHideRows || teamMember.sAgape">Agape<input type="checkbox" ng-model="teamMember.sAgape"
+                                       ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!backHallHideRows || teamMember.sM_S">M_S<input type="checkbox" ng-model="teamMember.sM_S"
+                                     ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!backHallHideRows || teamMember.sRef">Ref<input type="checkbox" ng-model="teamMember.sRef"
+                                     ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!backHallHideRows || teamMember.sp72_hr">p72_hr<input type="checkbox" ng-model="teamMember.sp72_hr"
+                                        ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!backHallHideRows || teamMember.sHous">Hous<input type="checkbox" ng-model="teamMember.sHous"
+                                      ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!backHallHideRows || teamMember.sCnd_Lite">Cnd_Lite<input type="checkbox" ng-model="teamMember.sCnd_Lite"
+                                          ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!backHallHideRows || teamMember.sClo">Clo<input type="checkbox" ng-model="teamMember.sClo"
+                                     ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!backHallHideRows || teamMember.sPP_Tech">Tech<input type="checkbox" ng-model="teamMember.sPP_Tech"
+                                      ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!backHallHideRows || teamMember.sEnt">Ent<input type="checkbox" ng-model="teamMember.sEnt"
+                                     ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!backHallHideRows || teamMember.sS_Pray">S_Pray<input type="checkbox" ng-model="teamMember.sS_Pray"
+                                        ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!backHallHideRows || teamMember.sSpo_Hr">Spo_Hr<input type="checkbox" ng-model="teamMember.sSpo_Hr"
+                                        ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!backHallHideRows || teamMember.sFoto">Foto<input type="checkbox" ng-model="teamMember.sFoto"
+                                      ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!backHallHideRows || teamMember.sFo_up">Fo_up<input type="checkbox" ng-model="teamMember.sFo_up"
+                                       ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!backHallHideRows || teamMember.sWor">Wor<input type="checkbox" ng-model="teamMember.sWor"
+                                     ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!backHallHideRows || teamMember.sGoph">Goph<input type="checkbox" ng-model="teamMember.sGoph"
+                                      ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!backHallHideRows || teamMember.sClnUp">ClnUp<input type="checkbox" ng-model="teamMember.sClnUp"
+                                       ng-change="selectedForUpdate(teamMember)"></label>
+                    <label ng-if="!backHallHideRows || teamMember.sMBH">Misc<input type="checkbox" ng-model="teamMember.sMBH"
+                                      ng-change="selectedForUpdate(teamMember)"></label>
+                </td>
+
+                <td data-title="'LAST_NAME'" sortable="'LAST_NAME'" filter="{ 'LAST_NAME': 'text' }">
+                    {{teamMember.LAST_NAME}}
+                </td>
+                <td data-title="'FIRST_NAME'" sortable="'FIRST_NAME'" filter="{ 'FIRST_NAME': 'text' }">
+                    {{teamMember.FIRST_NAME}}
+                </td>
+                <td data-title="'Original Walk'" sortable="'Original_Walk'" filter="{ 'Original_Walk': 'text' }">
+                    {{teamMember.Original_Walk}}
+                </td>
+                <td data-title="'Conf Rm'" sortable="'frontHallCount(teamMember)'"
+                    filter="{ 'frontHallCount(teamMember)': 'text' }">{{frontHallCount(teamMember)}}
+                </td>
+                <td data-title="'Back Hall'" sortable="'backHallCount(teamMember)'"
+                    filter="{ 'backHallCount(teamMember)': 'text' }">{{backHallCount(teamMember)}}
+                </td>
+                <td data-title="'Talks'" sortable="'talkCount(teamMember)'"
+                    filter="{ 'talkCount(teamMember)': 'text' }">{{talkCount(teamMember)}}
+                </td>
+                <td>
+                    <div class="table-actions">
+                <td>
+                    <div class="table-actions">
+                        <a class="btn btn-default" title="View" href="/#!/team-members/{{teamMember._id}}">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                        </a>
+                        <a class="btn btn-default" title="Edit" href="/#!/team-members/{{teamMember._id}}/edit">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </a>
+                        <a class="btn btn-danger" title="Remove" ng-really-message="Are you sure ?"
+                           ng-really-click="remove(teamMember)" item="teamMember">
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <a type="button" class="btn btn-success " title='Export' ng-csv="cvsMe(tableParams.data)"
+                   filename="team_selection_test.csv">
+                    <span class="glyphicon glyphicon-export"></span>Export Basic Information</a>
+                <a type="button" class="btn btn-success " title='Export'
+                   ng-csv="createTeamSelectionForm(tableParams.data)" filename="team_selection_form.csv">
+                    <span class="glyphicon glyphicon-export"></span>Export Team Selection Form</a>
+                <!--<a type="button" class="btn btn-danger " title='Export' ng-click="pushDataToMainTables(tableParams.data)"  >-->
+                <!--<span class="glyphicon glyphicon-bullhorn"></span>Push To Main Tables</a>-->
+                <!--<a type="button" class="btn btn-success " title='Export' ng-csv="cvsLastDayList(tableParams.data)"  filename="confRoomLastDay.csv">-->
+                <!--<span class="glyphicon glyphicon-export"></span>Export To CSV For Last Day List</a>-->
+            </tr>
+        </table>
+    </div>
+</section>

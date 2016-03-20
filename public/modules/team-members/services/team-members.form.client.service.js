@@ -401,6 +401,12 @@
                     label: 'Music:',
                     disabled: disabled
                 }},
+            { key: 'sMua',
+                type: 'input',
+                templateOptions: {
+                    label: 'Music Alternate:',
+                    disabled: disabled
+                }},
             { key: 'sAgape',
                 type: 'input',
                 templateOptions: {
