@@ -165,6 +165,10 @@
                 </td>
             </tr>
             <tr>
+                <h3>Team Size: {{countOfTeam(tableParams)}}</h3>
+                <h3>Zero Experience: {{countOfZeroExp(tableParams)}}</h3>
+                <h3>Some(1-3) Experience: {{countOfSomeExp(tableParams)}}</h3>
+                <h3>Uber Experience: {{countOfUberExp(tableParams)}}</h3>
                 <a type="button" class="btn btn-success " title='Export' ng-csv="cvsMe(tableParams.data)"
                    filename="team_selection_test.csv">
                     <span class="glyphicon glyphicon-export"></span>Export Basic Information</a>

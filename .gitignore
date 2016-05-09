@@ -8,3 +8,4 @@ app/tests/coverage/
 .bower-*/
 .idea/
 scripts/emmaus-teamselection-db-*
+scripts/dump

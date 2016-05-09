@@ -232,6 +232,61 @@ angular.module('team-members').controller('TeamMembersController', ['$scope', '$
             }
         };
 
+        $scope.countOfTeam = function (tableWhole) {
+            var theCount = 0;
+            var theList = tableWhole.data;
+            return  theList.length;
+        };
+
+
+        $scope.countOfZeroExp = function (tableWhole) {
+            var theCount = 0;
+            var theList = tableWhole.data;
+            for (var i = 0; i < theList.length; i++) {
+                if ( $scope.backHallCount(theList[i]) === 0) {
+                    if ($scope.frontHallCount(theList[i]) === 0) {
+                        theCount++;
+                    }
+                }
+            }
+            return theCount;
+        };
+        function betweenIs(lower,upper,value) {
+            var valueBack = false;
+            if ( value >= lower) {
+                if ( value <= upper ) {
+                    valueBack = true;
+                }
+            }
+            return valueBack;
+        }
+
+        var valueLow = 1;
+        var valueHigh = 3;
+
+        $scope.countOfSomeExp = function (tableWhole) {
+            var theCount = 0;
+            var theList = tableWhole.data;
+            for (var i = 0; i < theList.length; i++) {
+                var totalCnt = $scope.backHallCount(theList[i]) + $scope.frontHallCount(theList[i]);
+                if ( betweenIs(valueLow,valueHigh,totalCnt)) {
+                        theCount++;
+                }
+            }
+            return theCount;
+        };
+        $scope.countOfUberExp = function (tableWhole) {
+            var theCount = 0;
+            var theList = tableWhole.data;
+            for (var i = 0; i < theList.length; i++) {
+                var totalCnt = $scope.backHallCount(theList[i]) + $scope.frontHallCount(theList[i]);
+                if ( totalCnt > valueHigh) {
+                    theCount++;
+                }
+            }
+            return theCount;
+        };
+
         $scope.backHallCount = function (thisPerson) {
 
             var keys = Object.keys(thisPerson);

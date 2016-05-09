@@ -95,7 +95,7 @@ TeamMemberSchema=new Schema({
 	sClnUp: {type: Boolean},
 	sPP_Tech: {type: Boolean},
 
-	sPER: {type: String},
+	sPER: {type: Boolean},
 	sPRI: {type: Boolean},
 	sPHB: {type: Boolean},
 	sPIE: {type: Boolean},
