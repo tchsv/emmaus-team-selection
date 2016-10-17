@@ -9,3 +9,4 @@ app/tests/coverage/
 .idea/
 scripts/emmaus-teamselection-db-*
 scripts/dump
+/public/dist/
