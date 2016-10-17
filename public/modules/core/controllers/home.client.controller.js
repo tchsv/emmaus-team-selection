@@ -59,12 +59,26 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
             reader.readAsBinaryString(file);
 
         }
-
-        var adjustmentList = {
-            'MS': 'M_S',
-            'p72hr': 'p72_hr',
-            'Clnup': 'ClnUp'
+        var adjList = {
+            'LASTNAME':'LAST_NAME', 'FIRST NAME':'FIRST_NAME',
+            'PHONE #':'PHONE','STREET ADDRESS':'STREET_ADDRESS',
+            'ORIGINAL WALK #':'Original_Walk','L.D.':'L_D','S.D.':'S_D','A.S.D.':'A_S_D',
+            'A.L.D.':'A_L_D',
+            'Mu.':'Mu',
+            'A.T.L.':'A_T_L',
+            'BC':'BC','T.L.':'T_L','MS':'M_S','Ref.':'Ref','72 hr.':'p72_hr',
+            'Hous.':'Hous','Cnd. Lite':'Cnd_Lite','Clo.':'Clo','Wor.':'Wor','Fo.Up':'Fo_Up','S. Pray':'S_Pray',
+            'Spo. Hr.':'Spo_Hr','Ent.':'Ent','PP Tech':'PP_Tech'
+            
         };
+        var committeeList = ['L_D',  'S_D', 'A_S_D', 'A_L_D', 'A_T_L', 'T_L', 'Mu', 'Agape', 'M_S', 'Ref', 'p72_hr', 'Hous', 'Cnd_Lite', 'Clo', 'Wor', 'Fo_Up', 'S_Pray', 'Spo_Hr', 'Ent', 'Goph', 'Clnup', 'PP_Tech'];
+        var talkList = [ 'PER', 'MG', 'PG', 'OG', 'SG', 'JG',  'PRI', 'FD', 'PHB', 'PIE', 'S', 'CA', 'DISC', 'CW', 'BC'];
+
+        // var adjustmentList = {
+        //     'MS': 'M_S',
+        //     'p7 2hr': 'p72_hr',
+        //     'Clnup': 'ClnUp'
+        // };
         /**
          * Read the row of Data.
          * If row has column key that needs to be translated then
@@ -73,11 +87,11 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
          */
         var adjustTheColumns = function (rowOfData) {
             if (rowOfData) {
-                var keys = Object.keys(adjustmentList);
+                var keys = Object.keys(adjList);
                 for (var i = 0; i < keys.length; i++) {
                     var rowOfDataKeys = Object.keys(rowOfData);
                     if (rowOfDataKeys.indexOf(keys[i]) > -1) {
-                        rowOfData[adjustmentList[keys[i]]] = rowOfData[keys[i]];
+                        rowOfData[adjList[keys[i]]] = rowOfData[keys[i]];
                         delete rowOfData[keys[i]];
                     }
                 }
@@ -112,7 +126,11 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 
         var removeSuccess = function() {
             if (localOldDataCount <= localOldDataLength) {
-                localOldDataResource.delete({id: localOldData[localOldDataCount++]._id}).$promise.then(removeSuccess,removeFail);
+                if (localOldData[localOldDataCount++]._id) {
+                    localOldDataResource.delete({id: localOldData[localOldDataCount++]._id}).$promise.then(removeSuccess, removeFail);
+                } else {
+                    console.log('not there');
+                }
             }
         };
 

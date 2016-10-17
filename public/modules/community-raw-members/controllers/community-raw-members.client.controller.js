@@ -8,6 +8,7 @@ angular.module('community-raw-members').controller('CommunityRawMembersControlle
 		$scope.authentication = Authentication;
 		$scope.tableParams = TableSettings.getParams(CommunityRawMembers);
 		$scope.communityRawMember = {};
+		$scope.doingStuff = false;
 
 		var localRawData = {};
 		var committeeList = ['L_D',  'S_D', 'A_S_D', 'A_L_D', 'A_T_L', 'T_L', 'Mu', 'Agape', 'M_S', 'Ref', 'p72_hr', 'Hous', 'Cnd_Lite', 'Clo', 'Wor', 'Fo_Up', 'S_Pray', 'Spo_Hr', 'Ent', 'Goph', 'Clnup', 'PP_Tech'];
@@ -16,6 +17,7 @@ angular.module('community-raw-members').controller('CommunityRawMembersControlle
 			var nowRawList = $resource('/community-raw-members?count=99999&page=1');
 			var answer = nowRawList.get(function () {
 				localRawData = answer;
+				$scope.doingStuff = true;
 				var nowCommunityList = $resource('/community-members?count=99999&page=1');
 				nowCommunityList.get().$promise.then(successCurrentData, failCurrentData);
 			});
@@ -25,10 +27,6 @@ angular.module('community-raw-members').controller('CommunityRawMembersControlle
 			//compared the received data with each.
 			var communityMembersSet = [];
             var updateCommunityMembersSet = [];
-			$scope.progressbar = ngProgressFactory.createInstance();
-			$scope.progressbar.setColor('firebrick');
-			$scope.progressbar.setHeight('15px');
-			$scope.progressbar.start();
 			for ( var i = 0 ; i < localRawData.total; i++) {
 				var localRaw = localRawData.results[i]
 				var foundCurrent = false;
@@ -98,9 +96,7 @@ angular.module('community-raw-members').controller('CommunityRawMembersControlle
                         }
                     }
 				}
-				$scope.progressbar.set(Math.round((i/localRawData.total)*100));
 			}
-			$scope.progressbar.complete();
             if ( updateCommunityMembersSet.length > 0) {
                 updateTheCommunityDB(updateCommunityMembersSet);
             }
@@ -116,10 +112,6 @@ angular.module('community-raw-members').controller('CommunityRawMembersControlle
 			globalSizeIs = dataToUpload.length;
 			globalCurrentIs = 0;
 			globalCommunitMembersSet = dataToUpload;
-			$scope.progressbar = ngProgressFactory.createInstance();
-			$scope.progressbar.setColor('firebrick');
-			$scope.progressbar.setHeight('15px');
-			$scope.progressbar.start();
 			communityMembersLocal = $resource('/community-members');
 			communityMembersLocal.save({},globalCommunitMembersSet[globalCurrentIs++]).$promise.then(successCreateCommunity,failCreateCommunity);
 
@@ -127,15 +119,13 @@ angular.module('community-raw-members').controller('CommunityRawMembersControlle
 		var successCreateCommunity = function() {
 			if (globalCurrentIs < globalSizeIs) {
 				communityMembersLocal.save({},globalCommunitMembersSet[globalCurrentIs++]).$promise.then(successCreateCommunity,failCreateCommunity);
-				$scope.progressbar.set(Math.round((globalCurrentIs/globalSizeIs)*100));
 			}
 			else {
-				$scope.progressbar.complete();
-
+				$scope.doingStuff = false;
 			}
 		};
 		var failCreateCommunity = function() {
-			$socpe.progressbar.complete();
+			$scope.doingStuff = false;
 		};
 
         var globalUpdateSet;
@@ -146,29 +136,23 @@ angular.module('community-raw-members').controller('CommunityRawMembersControlle
             updateSizeIs = dataToUpload.length;
             updateCountIs = 0;
             globalUpdateSet = dataToUpload;
-            $scope.progressbar = ngProgressFactory.createInstance();
-            $scope.progressbar.setColor('firebrick');
-            $scope.progressbar.setHeight('15px');
-            $scope.progressbar.start();
             updateCommunityMembers = $resource('/community-members/:id',null,
                 {
                     'update': { method:'PUT' }
                 });
-            updateCommunityMembers.update({id:globalUpdateSet[updateCountIs]._id},globalUpdateSet[updateCountIs]).$promise.then(successCreateCommunity,failCreateCommunity);
+            updateCommunityMembers.update({id:globalUpdateSet[updateCountIs]._id},globalUpdateSet[updateCountIs]).$promise.then(successUpdateCommunity,failUpdateCommunity);
 
         };
-        var successCreateCommunity = function() {
+        var successUpdateCommunity = function() {
             updateCountIs++;
             if (updateCountIs < updateSizeIs) {
-                updateCommunityMembers.update({id:globalUpdateSet[updateCountIs]._id},globalUpdateSet[updateCountIs]).$promise.then(successCreateCommunity,failCreateCommunity);
-                $scope.progressbar.set(Math.round((updateCountIs/updateSizeIs)*100));
+                updateCommunityMembers.update({id:globalUpdateSet[updateCountIs]._id},globalUpdateSet[updateCountIs]).$promise.then(successUpdateCommunity,failUpdateCommunity);
             }
             else {
-                $scope.progressbar.complete();
 
             }
         };
-        var failCreateCommunity = function() {
+        var failUpdateCommunity = function() {
             $socpe.progressbar.complete();
         };
 
@@ -178,7 +162,7 @@ angular.module('community-raw-members').controller('CommunityRawMembersControlle
 
         var getComboKey = function(one) {
 			return (one.LAST_NAME + '-' + one.FIRST_NAME + '-' + one.Original_Walk);
-		}
+		};
 		var keyMasterEqual= function(one, two) {
 			if (one.LAST_NAME === two.LAST_NAME) {
 				if ( one.FIRST_NAME === two.FIRST_NAME) {
@@ -188,10 +172,10 @@ angular.module('community-raw-members').controller('CommunityRawMembersControlle
 				}
 			}
 			return false;
-		}
+		};
 		var failCurrentData = function(err) {
 			$log.error(err);
-		}
+		};
 
 
 		$scope.setFormFields = function(disabled) {
