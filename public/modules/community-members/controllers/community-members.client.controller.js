@@ -1,8 +1,8 @@
 'use strict';
 
 // Community members controller
-angular.module('community-members').controller('CommunityMembersController', ['$scope', '$stateParams', '$location','$resource', 'Authentication', 'CommunityMembers', 'TableSettings', 'CommunityMembersForm','ngProgressFactory',
-	function($scope, $stateParams, $location, $resource, Authentication, CommunityMembers, TableSettings, CommunityMembersForm,ngProgressFactory ) {
+angular.module('community-members').controller('CommunityMembersController', ['$scope', '$stateParams', '$location','$resource', 'Authentication', 'CommunityMembers', 'TableSettings', 'CommunityMembersForm','ngProgressFactory','$q',
+	function($scope, $stateParams, $location, $resource, Authentication, CommunityMembers, TableSettings, CommunityMembersForm,ngProgressFactory,$q ) {
 		$scope.authentication = Authentication;
 		$scope.tableParams = TableSettings.getParams(CommunityMembers);
 		$scope.communityMember = {};
@@ -293,7 +293,7 @@ angular.module('community-members').controller('CommunityMembersController', ['$
 
 		var getComboKey = function(one) {
 			return (one.LAST_NAME + '-' + one.FIRST_NAME + '-' + one.Original_Walk);
-		}
+		};
 		var keyMasterEqual= function(one, two) {
 			if (one.LAST_NAME === two.LAST_NAME) {
 				if ( one.FIRST_NAME === two.FIRST_NAME) {
@@ -303,10 +303,217 @@ angular.module('community-members').controller('CommunityMembersController', ['$
 				}
 			}
 			return false;
-		}
+		};
 		var failCurrentData = function(err) {
 			$log.error(err);
+		};
+
+
+		$scope.createTeamSelectionForm = function (tableData) {
+			var deferred = $q.defer();
+
+			var nowCommunityList = $resource('/community-members?count=99999&page=1&sorting%5BLAST_NAME%5D=asc');
+			nowCommunityList.get().$promise.then(function (teamDataResource) {
+				var teamData = teamDataResource.results;
+				var teamDataCSV = [];
+				var headerArray = generateRowHeader();
+				teamDataCSV.push(headerArray);
+				for (var pos = 0; pos < selectFrontHallList.length; pos++) {
+					var currentPos = selectFrontHallList[pos];
+					teamDataCSV.push(generateRowEspecial(' '));
+					var subHeaderArray = generateRowEspecial(selectFrontHallTitle[currentPos]);
+					teamDataCSV.push(subHeaderArray);
+					for (var i = 0; i < teamData.length; i++) {
+						if (teamData[i][currentPos]) {
+							var rowData = {};
+							rowData.TeamAssignment = getIsChairOrTalk(teamData[i]);
+							rowData.FIRST_NAME = teamData[i].FIRST_NAME;
+							rowData.LAST_NAME = teamData[i].LAST_NAME;
+							rowData.PHONE = teamData[i].AC + '-' + teamData[i].PHONE;
+							rowData.CITY = teamData[i].CITY;
+							rowData.Original_Walk = teamData[i].Original_Walk;
+							rowData.totalWalks = $scope.backHallCount(teamData[i]) + $scope.frontHallCount(teamData[i]);
+							rowData.ServiceRecord = karensSpecialTwo(frontHallList, teamData[i]) + ' ' + karensSpecialTwo(backHallList, teamData[i]);
+							teamDataCSV.push(rowData);
+						}
+					}
+				}
+				for (var pos = 0; pos < selectBackHallList.length; pos++) {
+					var currentPos = selectBackHallList[pos];
+					teamDataCSV.push(generateRowEspecial(' '));
+					var subHeaderArray = generateRowEspecial(selectBackHallTitle[currentPos]);
+					teamDataCSV.push(subHeaderArray);
+					for (var i = 0; i < teamData.length; i++) {
+						if (teamData[i][currentPos]) {
+							var rowData = {};
+							rowData.TeamAssignment = getIsChairOrTalk(teamData[i]);
+							rowData.FIRST_NAME = teamData[i].FIRST_NAME;
+							rowData.LAST_NAME = teamData[i].LAST_NAME;
+							rowData.PHONE = teamData[i].AC + '-' + teamData[i].PHONE;
+							rowData.CITY = teamData[i].CITY;
+							rowData.Original_Walk = teamData[i].Original_Walk;
+							rowData.totalWalks = $scope.backHallCount(teamData[i]) + $scope.frontHallCount(teamData[i]);
+							rowData.ServiceRecord = karensSpecialTwo(frontHallList, teamData[i]) + '; ' + karensSpecialTwo(backHallList, teamData[i]);
+							teamDataCSV.push(rowData);
+						}
+					}
+				}
+				deferred.resolve(teamDataCSV);
+			});
+
+			return deferred.promise;
+
+		};
+		$scope.cvsMe = function (tableData) {
+			var deferred = $q.defer();
+
+			var nowCommunityList = $resource('/community-members?count=99999&page=1&sorting%5BLAST_NAME%5D=asc');
+			nowCommunityList.get().$promise.then(function (teamDataResource) {
+				var teamData = teamDataResource.results;
+				var teamDataCSV = [];
+				var pushHeaders = true;
+				for (var i = 0; i < teamData.length; i++) {
+					var rowData = {};
+					rowData.FIRST_NAME = teamData[i].FIRST_NAME;
+					rowData.LAST_NAME = teamData[i].LAST_NAME;
+					rowData.PHONE = teamData[i].AC + '-' + teamData[i].PHONE;
+					rowData.CITY = teamData[i].CITY;
+					rowData.Original_Walk = teamData[i].Original_Walk;
+					rowData.totalWalks = $scope.backHallCount(teamData[i]) + $scope.frontHallCount(teamData[i]);
+					rowData.ConfRoom = karensSpecialTwo(frontHallList, teamData[i]);
+					rowData.BackHall = karensSpecialTwo(backHallList, teamData[i]);
+					for (var j = 0; j < frontHallList.length; j++) {
+						rowData[frontHallList[j]] = teamData[i][frontHallList[j]] ? karensSpecialThree(frontHallList[j], teamData[i][frontHallList[j]], 3) : '-';
+					}
+					rowData['PRI'] = teamData[i]['PRI'] ? teamData[i]['PRI'] : '-';
+					rowData['FD'] = teamData[i]['FD'] ? teamData[i]['FD'] : '-';
+					if (pushHeaders) {
+						var headerArray = Object.keys(rowData);
+						teamDataCSV.push(headerArray);
+						pushHeaders = false;
+					}
+					teamDataCSV.push(rowData);
+				}
+				deferred.resolve(teamDataCSV);
+			});
+
+			return deferred.promise;
+		};
+
+		var karensSpecialTwo = function (frontBackList, data) {
+			var summaryAnswer = "";
+			for (var j = 0; j < frontBackList.length; j++) {
+				summaryAnswer += data[frontBackList[j]] ? karensSpecialThree(frontBackList[j], data[frontBackList[j]], 2) + ',' : '';
+			}
+			return summaryAnswer;
+		};
+
+		var karensSpecialThree = function (label, data, number) {
+			var dataCount = data.split('-').length;
+			if (dataCount > number) {
+				return label + '(' + dataCount + ')';
+			}
+			else {
+				return label + '-' + data + ' ';
+			}
+		};
+
+		$scope.countOfTeam = function (tableWhole) {
+			var theCount = 0;
+			var theList = tableWhole.data;
+			return  theList.length;
+		};
+
+
+		$scope.countOfZeroExp = function (tableWhole) {
+			var theCount = 0;
+			var theList = tableWhole.data;
+			for (var i = 0; i < theList.length; i++) {
+				if ( $scope.backHallCount(theList[i]) === 0) {
+					if ($scope.frontHallCount(theList[i]) === 0) {
+						theCount++;
+					}
+				}
+			}
+			return theCount;
+		};
+		function betweenIs(lower,upper,value) {
+			var valueBack = false;
+			if ( value >= lower) {
+				if ( value <= upper ) {
+					valueBack = true;
+				}
+			}
+			return valueBack;
 		}
+
+		var valueLow = 1;
+		var valueHigh = 3;
+
+		$scope.countOfSomeExp = function (tableWhole) {
+			var theCount = 0;
+			var theList = tableWhole.data;
+			for (var i = 0; i < theList.length; i++) {
+				var totalCnt = $scope.backHallCount(theList[i]) + $scope.frontHallCount(theList[i]);
+				if ( betweenIs(valueLow,valueHigh,totalCnt)) {
+					theCount++;
+				}
+			}
+			return theCount;
+		};
+		$scope.countOfUberExp = function (tableWhole) {
+			var theCount = 0;
+			var theList = tableWhole.data;
+			for (var i = 0; i < theList.length; i++) {
+				var totalCnt = $scope.backHallCount(theList[i]) + $scope.frontHallCount(theList[i]);
+				if ( totalCnt > valueHigh) {
+					theCount++;
+				}
+			}
+			return theCount;
+		};
+
+		$scope.backHallCount = function (thisPerson) {
+
+			var keys = Object.keys(thisPerson);
+			var overAllCount = 0;
+			for (var i = 0; i < backHallList.length; i++) {
+				if (keys.indexOf(backHallList[i]) > -1) {
+					var colValue = thisPerson[backHallList[i]];
+					var arrayColValue = colValue.split('-');
+					overAllCount += arrayColValue.length;
+				}
+			}
+			return overAllCount;
+		};
+		$scope.frontHallCount = function (thisPerson) {
+
+			var keys = Object.keys(thisPerson);
+			var overAllCount = 0;
+			for (var i = 0; i < frontHallList.length; i++) {
+				if (keys.indexOf(frontHallList[i]) > -1) {
+					var colValue = thisPerson[frontHallList[i]];
+					var arrayColValue = colValue.split('-');
+					overAllCount += arrayColValue.length;
+				}
+			}
+			return overAllCount;
+		};
+		$scope.talkCount = function (thisPerson) {
+
+			var keys = Object.keys(thisPerson);
+			var overAllCount = 0;
+			for (var i = 0; i < talkList.length; i++) {
+				if (keys.indexOf(talkList[i]) > -1) {
+					var colValue = thisPerson[talkList[i]];
+					var arrayColValue = colValue.split('-');
+					overAllCount += arrayColValue.length;
+				}
+			}
+			return overAllCount;
+		};
+
+
 
 	}
 
