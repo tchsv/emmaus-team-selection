@@ -4,6 +4,7 @@ MAINTAINER Matthias Luebken, matthias@catalyst-zero.com
 
 WORKDIR /home/mean
 
+
 # Install Mean.JS Prerequisites
 RUN npm install -g grunt-cli
 RUN npm install -g bower
@@ -25,5 +26,5 @@ ENV NODE_ENV development
 
 # Port 3000 for server
 # Port 35729 for livereload
-EXPOSE 3000 35729
+EXPOSE 3700 35729
 CMD ["grunt"]

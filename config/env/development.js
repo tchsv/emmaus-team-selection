@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	db: 'mongodb://localhost/emmaus-team-selection-dev',
+	db: 'mongodb://localhost/emmaus-team-selection-dev483',
 	app: {
 		title: 'emmaus-team-selection - Development Environment'
 	},

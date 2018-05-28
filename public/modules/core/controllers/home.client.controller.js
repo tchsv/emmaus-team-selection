@@ -66,7 +66,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
             'A.L.D.':'A_L_D',
             'Mu.':'Mu',
             'A.T.L.':'A_T_L',
-            'BC':'BC','T.L.':'T_L','MS':'M_S','Ref.':'Ref','72 hr.':'p72_hr',
+            'T.L.':'T_L','MS':'M_S','Ref.':'Ref','72 hr.':'p72_hr',
             'Hous.':'Hous','Cnd. Lite':'Cnd_Lite','Clo.':'Clo','Wor.':'Wor','Fo.Up':'Fo_Up','S. Pray':'S_Pray',
             'Spo. Hr.':'Spo_Hr','Ent.':'Ent','PP Tech':'PP_Tech'
             

@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	db: 'mongodb://localhost/emmaus-team-selection-test',
+	db: 'mongodb://localhost/emmaus-team-selection-test483',
 	port: 3001,
 	app: {
 		title: 'emmaus-team-selection - Test Environment'
