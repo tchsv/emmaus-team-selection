@@ -75,10 +75,10 @@ angular.module('team-members').controller('TeamMembersController', ['$scope', '$
         var selectFrontHallTitle = {'sL_D':'Lay Director', 'sS_D':'Spirtual Director', 'sA_S_D':'Asst. Spirtual Director'
             ,'sA_S_Da':'Alternate','sA_S_De':'Extra', 'sA_L_D':'Asst. Lay Director','sA_L_Da':'Alternate','sA_L_De':'Extra'
             , 'sA_T_L':'Asst. Table Leader','sA_T_La':'Alternate','sA_T_Le':'Extra', 'sT_L':'Table Leader','sT_La':'Alternate','sT_Le':'Extra', 'sMCR':'Conf Rm Extra'};
-        var selectBackHallList = ['sMu','sMua', 'sPP_Tech', 'sAgape', 'sM_S', 'sRef', 'sp72_hr', 'sHous', 'sCnd_Lite', 'sClo', 'sWor', 'sFo_Up','sFoto', 'sS_Pray', 'sSpo_Hr', 'sEnt', 'sGoph', 'sClnUp', 'sMBH', 'sP'];
+        var selectBackHallList = ['sMu','sMua', 'sPP_Tech', 'sAgape', 'sM_S', 'sRef', 'sp72_hr', 'sHous', 'sCnd_Lite', 'sClo', 'sWor', 'sFo_up','sFoto', 'sS_Pray', 'sSpo_Hr', 'sEnt', 'sGoph', 'sClnUp', 'sMBH', 'sP'];
         var selectBackHallTitle = {'sMu':'Music','sMua':'Alternate', 'sPP_Tech':'Tech', 'sAgape':'Agape',
             'sM_S':'Meal Service', 'sRef':'Refreshments', 'sp72_hr':'72 hour', 'sHous':'Housing',
-            'sCnd_Lite':'Candlelight', 'sClo':'Closing', 'sWor':'Worship', 'sFo_Up':'Follow Up',
+            'sCnd_Lite':'Candlelight', 'sClo':'Closing', 'sWor':'Worship', 'sFo_up':'Follow Up',
             'sFoto':'Photographer', 'sS_Pray':'Speakers Prayer Chap', 'sSpo_Hr':'Sponsers Hour', 'sEnt':'Entertainment',
             'sGoph':'Humble Servant', 'sClnUp':'Clean Up', 'sMBH':'Extra Back Hall'};
         var talkList = ['PER', 'MG', 'PG', 'OG', 'SG', 'JG', 'PRI', 'FD', 'PHB', 'PIE', 'S', 'CA', 'DISC', 'CW', 'BC'];
