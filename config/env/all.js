@@ -2,11 +2,11 @@
 
 module.exports = {
 	app: {
-		title: 'emmaus-team-selection',
+		title: 'emmaus-team-selectionJS',
 		description: 'Allow lay director to upload community listing and select team.',
 		keywords: 'MongoDB, Express, AngularJS, Node.js'
 	},
-	port: process.env.PORT || 3700,
+	port: process.env.PORT || 3701,
 	templateEngine: 'swig',
 	sessionSecret: 'MEAN',
 	sessionCollection: 'sessions',

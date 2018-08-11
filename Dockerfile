@@ -1,4 +1,4 @@
-FROM node:10
+FROM node:6
 
 MAINTAINER Matthias Luebken, matthias@catalyst-zero.com
 
@@ -25,7 +25,7 @@ RUN npm install -g   nodemon@1.2.1
 # Make everything available for start
 ADD . /home/mean
 #RUN npm install
-#RUN bower install --config.interactive=false --allow-root
+RUN bower install  --allow-root
 
 # currently only works for development
 ENV NODE_ENV development
