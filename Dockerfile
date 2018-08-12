@@ -24,7 +24,7 @@ RUN npm install -g   nodemon@1.2.1
 
 # Make everything available for start
 ADD . /home/mean
-#RUN npm install
+RUN npm install
 RUN bower install  --allow-root
 
 # currently only works for development
@@ -33,4 +33,4 @@ ENV NODE_ENV development
 # Port 3000 for server
 # Port 35729 for livereload
 EXPOSE 3700 35729
-CMD ["grunt"]
+CMD ["node","server.js"]
